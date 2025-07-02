@@ -56,7 +56,7 @@ export default function Home() {
         </a>
 </div>
         {/* Navigation */}
-        <nav className="mt-10 flex justify-center gap-10">
+        <nav className="mt-10 flex justify-center  flex-wrap gap-4 sm:gap-10 ">
           {sections.map((s) => (
             <button
               key={s.id}
@@ -73,7 +73,7 @@ export default function Home() {
         </nav>
       </header>
       {/* Sliding Content */}
-      <div className="relative w-full max-w-5xl h-[360px] mt-16 overflow-hidden">
+      <div className="relative w-full max-w-5xl h-[790px] mt-16 overflow-hidden ">
         <div className={getSectionClass("about")}>
           <AboutSection />
         </div>
