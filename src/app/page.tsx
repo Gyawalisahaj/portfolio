@@ -44,6 +44,17 @@ export default function Home() {
         <p className="max-w-xl mx-auto mt-6 text-slate-300">
           I’m passionate about building practical AI solutions using machine learning, deep learning, and data science.
         </p>
+        <div className="flex flex-col items-center">
+  {/* Profile Image, Name, Title */}
+        <a
+          href="/SGCV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 px-6 py-2 bg-[#64ffda] text-[#0a192f] rounded font-semibold shadow hover:bg-[#52c7b8] transition"
+        >
+         Download CV
+        </a>
+</div>
         {/* Navigation */}
         <nav className="mt-10 flex justify-center gap-10">
           {sections.map((s) => (
@@ -72,10 +83,10 @@ export default function Home() {
         <div className={getSectionClass("projects")}>
           <ProjectsSection />
         </div>
-        <div className={getSectionClass("projects")}>
+        <div className={getSectionClass("education")}>
           <EducationSection />
         </div>
-        <div className={getSectionClass("projects")}>
+        <div className={getSectionClass("contact")}>
           <ContactSection />
         </div>
       </div>
