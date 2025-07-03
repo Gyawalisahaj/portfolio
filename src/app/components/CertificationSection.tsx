@@ -22,7 +22,7 @@ export default function CertificationSection() {
          →  This hackathon sharpened my ability to solve real-world problems under pressure. I improved my collaboration and communication skills,
           gained hands-on experience in rapid prototyping, and learned how to integrate features effectively within strict deadlines.
         </p>
-        <div className="mt-2 flex flex-wrap gap-2">
+        <div className="mt-2 flex flex-wrap gap-2 mb-4">
           <span className="bg-[#233554] text-[#64ffda] rounded px-2 py-1 text-xs">Teamwork</span>
           <span className="bg-[#233554] text-[#64ffda] rounded px-2 py-1 text-xs">AI Integration</span>
           <span className="bg-[#233554] text-[#64ffda] rounded px-2 py-1 text-xs">Rapid Prototyping</span>
@@ -31,6 +31,14 @@ export default function CertificationSection() {
           <span className="bg-[#233554] text-[#64ffda] rounded px-2 py-1 text-xs">GitHub</span>
           <span className="bg-[#233554] text-[#64ffda] rounded px-2 py-1 text-xs">Communication</span>
         </div>
+        <a
+          href="/certificate.jpeg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-11 px-6 py-2 bg-[#64ffda] text-[#0a192f] rounded font-semibold shadow hover:bg-[#52c7b8] transition"
+        >
+         See Certificate
+        </a>
       </div>
     </div>
   );

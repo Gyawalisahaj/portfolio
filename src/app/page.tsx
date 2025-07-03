@@ -1,15 +1,17 @@
 "use client";
 import { useState } from "react";
 import AboutSection from "./components/AboutSection";
-import ExperienceSection from "./components/CertificationSection";
 import ProjectsSection from "./components/ProjectsSection";
 import EducationSection from "./components/EducationSection";
 import ContactSection from "./components/ContactSection";
+import SkillSection from "./components/SkillSection";
+import CertificationSection from "./components/CertificationSection";
 
 
 
 const sections = [
   { name: "ABOUT", id: "about" },
+  { name: "SKILLS",  id:"skill"},
   { name: "CERTIFICATION", id: "certificate" },
   { name: "PROJECTS", id: "projects" },
   { name: "EDUCATION", id: "education" },
@@ -77,8 +79,11 @@ export default function Home() {
         <div className={getSectionClass("about")}>
           <AboutSection />
         </div>
+        <div className={getSectionClass("skill")}>
+          <SkillSection />
+        </div>
         <div className={getSectionClass("certificate")}>
-          <ExperienceSection />
+          <CertificationSection />
         </div>
         <div className={getSectionClass("projects")}>
           <ProjectsSection />
@@ -89,6 +94,7 @@ export default function Home() {
         <div className={getSectionClass("contact")}>
           <ContactSection />
         </div>
+        
       </div>
     </div>
   );
