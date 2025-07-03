@@ -1,7 +1,7 @@
-export default function ExperienceSection() {
+export default function CertificationSection() {
   return (
     <div className="p-8">
-      <h2 className="text-2xl font-bold mb-4">Experience</h2>
+      <h2 className="text-2xl font-bold mb-4">Certification</h2>
 
       {/* Hackathon Experience */}
       <div className="mb-8">
