@@ -1,4 +1,6 @@
 "use client";
+import Image from 'next/image'
+import sahajPic from '/public/image.jpg'
 import { useState } from "react";
 import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
@@ -31,11 +33,13 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#0a192f] text-slate-100 flex flex-col items-center">
       <div className="w-60 h-60 mt-16 overflow-hidden rounded-xl shadow-lg">
-        <img
-        src="/image.jpg"
-        alt="Your Name"
-        className="w-60 h-60 rounded-full border-4 border-[#233554] mb-3 shadow-lg object-cover"
-        />
+        <Image
+         src={sahajPic}
+        alt="Sahaj"
+        width={240}
+        height={240}
+        className="rounded-full border-4 border-[#233554] mb-3 shadow-lg object-cover"
+       />
       </div>
       {/* Header */}
       <header className="mt-8 text-center">
