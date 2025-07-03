@@ -53,7 +53,7 @@ export default function Home() {
         <div className="flex flex-col items-center">
   {/* Profile Image, Name, Title */}
         <a
-          href="/SGCV.pdf"
+          href="./SGCV.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 px-6 py-2 bg-[#64ffda] text-[#0a192f] rounded font-semibold shadow hover:bg-[#52c7b8] transition"

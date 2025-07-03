@@ -1,10 +1,13 @@
-// next.config.js
-const isGithubPages = process.env.NODE_ENV === 'production';
+/** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
 
-const repo = 'portfolio'; // your repo name
-
-module.exports = {
+const nextConfig = {
   output: 'export',
-  basePath: isGithubPages ? `/${repo}` : '',
-  assetPrefix: isGithubPages ? `/${repo}/` : '',
+  basePath: isProd ? '/portfolio' : '',
+  assetPrefix: isProd ? '/portfolio/' : '',
+  images: {
+    unoptimized: true,
+  },
 };
+
+module.exports = nextConfig;

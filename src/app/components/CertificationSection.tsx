@@ -32,7 +32,7 @@ export default function CertificationSection() {
           <span className="bg-[#233554] text-[#64ffda] rounded px-2 py-1 text-xs">Communication</span>
         </div>
         <a
-          href="/certificate.jpeg"
+          href="./certificate.jpeg"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-11 px-6 py-2 bg-[#64ffda] text-[#0a192f] rounded font-semibold shadow hover:bg-[#52c7b8] transition"
