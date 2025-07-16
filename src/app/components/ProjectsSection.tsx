@@ -19,6 +19,27 @@ const projects = [
       "React",
     ],
   },
+  {
+  title: "Nepali Movie Recommendation System",
+  details: [
+    "→ Developed a full-stack movie recommendation system using content-based filtering with cosine similarity.",
+    "→ Collected Nepali movie data using web scraping with BeautifulSoup from trusted online sources.",
+    "→ Implemented JWT-based user authentication in FastAPI to securely handle login and protected routes.",
+    "→ Built a dynamic React search bar with live title suggestions and TailwindCSS for smooth UI/UX.",
+    "→ Displayed detailed movie recommendations including poster, genre, cast, director, and trailer link."
+  ],
+  tech: [
+    "FastAPI",
+    "JWT Auth",
+    "BeautifulSoup",
+    "Cosine Similarity",
+    "Scikit-learn",
+    "Numpy/Pandas",
+    "React",
+    "TailwindCSS"
+  ],
+  }
+
   
 ];
 
@@ -55,11 +76,11 @@ export default function ProjectsSection() {
             >
               {openIndex === idx && (
                 <>
-                  {project.details.map((desc, i) => (
-                    <p key={i} className="mt-1 text-slate-300">
-                      {desc}
-                    </p>
-                  ))}
+                  <ul className="list-disc list-inside text-slate-300 space-y-1">
+                    {project.details.map((desc, i) => (
+                    <li key={i}>{desc}</li>
+                    ))}
+                  </ul>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {project.tech.map((t) => (
                       <span
