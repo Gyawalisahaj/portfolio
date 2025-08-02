@@ -8,7 +8,8 @@ export default function EducationSection() {
         <h3 className="text-xl font-semibold mb-1">
           Bachelor’s Degree in Computer Science and Information Technology <span className="text-sm text-slate-400">(Ongoing)</span>
         </h3>
-        <span className="text-[#64ffda]">Bhaktapur Multiple Campus, Tribhuvan University</span>
+        <a href="https://bkmc.tu.edu.np/"> <span className="text-[#64ffda]">Bhaktapur Multiple Campus, Tribhuvan University</span></a>
+       
         <span className="ml-4 text-slate-400">Bhaktapur, Nepal</span>
       </div>
 
@@ -17,7 +18,8 @@ export default function EducationSection() {
         <h3 className="text-xl font-semibold mb-1">
           Higher Secondary Education <span className="text-sm text-slate-400">(2020 – 2022)</span>
         </h3>
-        <span className="text-[#64ffda]">Kathmandu Model College</span>
+        <a href="https://ktmmodelcollege.edu.np/"><span className="text-[#64ffda]" >Kathmandu Model College</span></a>
+        
         <span className="ml-4 text-slate-400">Kathmandu, Nepal</span>
         <p className="mt-2 text-slate-300">
           Major Subjects: Physics, Chemistry, Mathematics, Biology
