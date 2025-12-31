@@ -23,7 +23,7 @@ export default function ExperienceSection() {
     <div className="lance-card">
       {/* SECTION HEADER */}
       <div className="flex items-center gap-4 mb-12">
-        {/* <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.3em] uppercase">03 // Field Work</span> */}
+        <div className="w-1 h-8 bg-[#64ffda]" />  
         <h2 className="text-4xl font-black italic uppercase tracking-tighter">Experience</h2>
       </div>
 
@@ -44,7 +44,7 @@ export default function ExperienceSection() {
                   {exp.title}
                 </h3>
                 <p className="text-slate-400 font-mono text-[11px] uppercase tracking-widest mt-1">
-                  {exp.company} <span className="text-slate-700 mx-2">//</span> {exp.location}
+                  {exp.company} <span className="text-slate-700 mx-2"></span> {exp.location}
                 </p>
               </div>
             </div>
@@ -53,7 +53,7 @@ export default function ExperienceSection() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="md:col-span-2 space-y-4">
                 <p className="text-slate-300 text-sm leading-relaxed italic">
-                  "{exp.description}"
+                  {exp.description}
                 </p>
                 <ul className="space-y-3">
                   {exp.bullets.map((bullet, i) => (
