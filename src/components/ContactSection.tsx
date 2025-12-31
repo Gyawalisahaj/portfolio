@@ -10,10 +10,10 @@ export default function ContactSection() {
     e.preventDefault();
     setStatus("SENDING");
 
-    // Replace these with your actual EmailJS credentials
-    const SERVICE_ID = "YOUR_SERVICE_ID";
-    const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-    const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+    // Pulling credentials from .env.local
+    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current!, PUBLIC_KEY)
       .then(() => {
@@ -21,7 +21,7 @@ export default function ContactSection() {
         formRef.current?.reset();
         setTimeout(() => setStatus("IDLE"), 5000);
       }, (error) => {
-        console.error(error.text);
+        console.error("EmailJS Error:", error.text);
         setStatus("ERROR");
         setTimeout(() => setStatus("IDLE"), 5000);
       });
@@ -31,7 +31,7 @@ export default function ContactSection() {
     <div className="lance-card overflow-hidden">
       <div className="flex justify-between items-center mb-12">
         <div>
-          <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.4em] uppercase block mb-2">05 // Terminal</span>
+          {/* <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.4em] uppercase block mb-2">05 // Terminal</span> */}
           <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Contact</h2>
         </div>
         <div className="text-right">
@@ -51,11 +51,11 @@ export default function ContactSection() {
           <div className="space-y-4">
              <h4 className="font-mono text-[10px] text-slate-500 tracking-[0.3em] uppercase">Connect</h4>
              <div className="grid grid-cols-2 gap-6">
-                <a href="https://github.com/Gyawalisahaj" className="group block">
+                <a href="https://github.com/Gyawalisahaj" target="_blank" className="group block">
                    <p className="text-slate-600 font-mono text-[9px] uppercase">Github</p>
                    <p className="text-white font-bold italic group-hover:text-[#64ffda] transition-colors uppercase tracking-widest">Access _</p>
                 </a>
-                <a href="https://www.linkedin.com/in/sahajgyawali/" className="group block">
+                <a href="https://www.linkedin.com/in/sahajgyawali/" target="_blank" className="group block">
                    <p className="text-slate-600 font-mono text-[9px] uppercase">LinkedIn</p>
                    <p className="text-white font-bold italic group-hover:text-[#64ffda] transition-colors uppercase tracking-widest">Connect _</p>
                 </a>
@@ -64,7 +64,7 @@ export default function ContactSection() {
           
           <div className="p-4 bg-white/[0.02] border border-white/5 rounded-sm">
              <p className="text-slate-600 font-mono text-[8px] uppercase mb-1">Direct Address</p>
-             <p className="text-slate-300 font-mono text-xs">sahajgnawali@gmail.com</p>
+             <p className="text-slate-300 font-mono text-xs underline decoration-[#64ffda]/30">sahajgnawali@gmail.com</p>
           </div>
         </div>
 
@@ -76,25 +76,38 @@ export default function ContactSection() {
                 required
                 name="user_name"
                 placeholder="NAME / IDENTIFIER"
-                className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all"
+                className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all placeholder:opacity-30"
               />
             </div>
-            <div className="relative">
-              <input 
-                required
-                name="user_email"
-                type="email"
-                placeholder="SENDER_EMAIL"
-                className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all"
-              />
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="relative">
+                <input 
+                  required
+                  name="user_email"
+                  type="email"
+                  placeholder="SENDER_EMAIL"
+                  className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all placeholder:opacity-30"
+                />
+              </div>
+              <div className="relative">
+                <input 
+                  required
+                  name="user_phone"
+                  type="text"
+                  placeholder="WHATSAPP_NO"
+                  className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all placeholder:opacity-30"
+                />
+              </div>
             </div>
+
             <div className="relative">
               <textarea 
                 required
                 name="message"
                 rows={3}
                 placeholder="MESSAGE_PAYLOAD"
-                className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all resize-none"
+                className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all resize-none placeholder:opacity-30"
               />
             </div>
           </div>
@@ -103,13 +116,17 @@ export default function ContactSection() {
             type="submit"
             disabled={status === "SENDING"}
             className={`w-full py-4 font-mono text-[11px] font-black tracking-[0.5em] uppercase transition-all duration-300 ${
-              status === "SUCCESS" ? "bg-green-500 text-white" : "bg-[#64ffda] text-black hover:bg-white"
+              status === "SUCCESS" 
+                ? "bg-green-500 text-white" 
+                : status === "ERROR" 
+                  ? "bg-red-500 text-white" 
+                  : "bg-[#64ffda] text-black hover:bg-white hover:shadow-[0_0_20px_rgba(100,255,218,0.2)]"
             }`}
           >
             {status === "IDLE" && "Execute Send →"}
-            {status === "SENDING" && "Sending..."}
+            {status === "SENDING" && "Transmitting..."}
             {status === "SUCCESS" && "Success // Logged"}
-            {status === "ERROR" && "Retry Transmission"}
+            {status === "ERROR" && "Error // Retry"}
           </button>
         </form>
       </div>

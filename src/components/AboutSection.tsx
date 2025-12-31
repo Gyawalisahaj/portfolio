@@ -19,8 +19,8 @@ export default function AboutSection() {
     <div className="lance-card space-y-12">
       {/* 01. THE MISSION */}
       <div className="flex items-center gap-4">
-        <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.3em] uppercase">01 // Profile</span>
-        <h2 className="text-4xl font-black italic uppercase tracking-tighter">Mission Statement</h2>
+        {/* <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.3em] uppercase">01 // Profile</span> */}
+        <h2 className="text-4xl font-black italic uppercase tracking-tighter">About Statement</h2>
       </div>
 
       <div className="max-w-3xl">

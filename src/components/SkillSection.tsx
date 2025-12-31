@@ -31,7 +31,7 @@ export default function SkillSection() {
     <div className="lance-card">
       {/* SECTION TITLE */}
       <div className="flex items-center gap-4 mb-8">
-        <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.3em] uppercase">02 // Stack</span>
+        {/* <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.3em] uppercase">02 // Stack</span> */}
         <h2 className="text-4xl font-black italic uppercase tracking-tighter">Technical Arsenal</h2>
       </div>
 

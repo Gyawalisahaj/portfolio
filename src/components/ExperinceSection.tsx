@@ -23,7 +23,7 @@ export default function ExperienceSection() {
     <div className="lance-card">
       {/* SECTION HEADER */}
       <div className="flex items-center gap-4 mb-12">
-        <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.3em] uppercase">03 // Field Work</span>
+        {/* <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.3em] uppercase">03 // Field Work</span> */}
         <h2 className="text-4xl font-black italic uppercase tracking-tighter">Experience</h2>
       </div>
 
