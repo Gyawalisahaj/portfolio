@@ -16,7 +16,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <div className="lance-card space-y-12">
+    <div className="exp-card space-y-12">
       {/* 01. THE MISSION */}
       <div className="flex items-center gap-4">
         {/* <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.3em] uppercase">01 // Profile</span> */}
