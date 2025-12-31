@@ -28,16 +28,16 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="lance-card overflow-hidden">
+    <div className="exp-card overflow-hidden">
       <div className="flex justify-between items-center mb-12">
         <div>
           {/* <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.4em] uppercase block mb-2">05 // Terminal</span> */}
-          <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Contact</h2>
+          <h2 className="text-5xl font-black italic uppercase tracking-tighter text-white">Contact</h2>
         </div>
         <div className="text-right">
           <div className="flex items-center gap-2 justify-end">
             <span className={`w-1.5 h-1.5 rounded-full ${status === "SENDING" ? "bg-yellow-400 animate-pulse" : "bg-[#64ffda] animate-ping"}`}></span>
-            <span className="font-mono text-[9px] text-white tracking-widest uppercase">
+            <span className="font-mono text-[11px] text-white tracking-widest uppercase">
               {status === "SENDING" ? "Transmitting..." : "Server Ready"}
             </span>
           </div>
@@ -49,22 +49,22 @@ export default function ContactSection() {
         {/* SOCIAL NODES */}
         <div className="space-y-10">
           <div className="space-y-4">
-             <h4 className="font-mono text-[10px] text-slate-500 tracking-[0.3em] uppercase">Connect</h4>
+             <h4 className="font-mono text-[20px] text-slate-500 tracking-[0.3em] uppercase">Connect</h4>
              <div className="grid grid-cols-2 gap-6">
                 <a href="https://github.com/Gyawalisahaj" target="_blank" className="group block">
-                   <p className="text-slate-600 font-mono text-[9px] uppercase">Github</p>
+                   <p className="text-slate-600 font-mono text-[15px] uppercase">Github</p>
                    <p className="text-white font-bold italic group-hover:text-[#64ffda] transition-colors uppercase tracking-widest">Access _</p>
                 </a>
                 <a href="https://www.linkedin.com/in/sahajgyawali/" target="_blank" className="group block">
-                   <p className="text-slate-600 font-mono text-[9px] uppercase">LinkedIn</p>
+                   <p className="text-slate-600 font-mono text-[15px] uppercase">LinkedIn</p>
                    <p className="text-white font-bold italic group-hover:text-[#64ffda] transition-colors uppercase tracking-widest">Connect _</p>
                 </a>
              </div>
           </div>
           
           <div className="p-4 bg-white/[0.02] border border-white/5 rounded-sm">
-             <p className="text-slate-600 font-mono text-[8px] uppercase mb-1">Direct Address</p>
-             <p className="text-slate-300 font-mono text-xs underline decoration-[#64ffda]/30">sahajgnawali@gmail.com</p>
+             <p className="text-slate-600 font-mono text-[12px] uppercase mb-1">Direct Address</p>
+             <p className="text-slate-300 font-mono text-lg underline decoration-[#64ffda]/30">sahajgnawali@gmail.com</p>
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export default function ContactSection() {
                 required
                 name="user_name"
                 placeholder="NAME / IDENTIFIER"
-                className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all placeholder:opacity-30"
+                className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[12px] text-white focus:border-[#64ffda] outline-none transition-all placeholder:opacity-30"
               />
             </div>
             
@@ -87,7 +87,7 @@ export default function ContactSection() {
                   name="user_email"
                   type="email"
                   placeholder="SENDER_EMAIL"
-                  className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all placeholder:opacity-30"
+                  className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[12px] text-white focus:border-[#64ffda] outline-none transition-all placeholder:opacity-30"
                 />
               </div>
               <div className="relative">
@@ -96,7 +96,7 @@ export default function ContactSection() {
                   name="user_phone"
                   type="text"
                   placeholder="WHATSAPP_NO"
-                  className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all placeholder:opacity-30"
+                  className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[12px] text-white focus:border-[#64ffda] outline-none transition-all placeholder:opacity-30"
                 />
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function ContactSection() {
                 name="message"
                 rows={3}
                 placeholder="MESSAGE_PAYLOAD"
-                className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[10px] text-white focus:border-[#64ffda] outline-none transition-all resize-none placeholder:opacity-30"
+                className="w-full bg-transparent border-b border-white/10 py-3 font-mono text-[12px] text-white focus:border-[#64ffda] outline-none transition-all resize-none placeholder:opacity-30"
               />
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function ContactSection() {
           <button 
             type="submit"
             disabled={status === "SENDING"}
-            className={`w-full py-4 font-mono text-[11px] font-black tracking-[0.5em] uppercase transition-all duration-300 ${
+            className={`w-full py-4 font-mono text-[18px] font-black tracking-[0.5em] uppercase transition-all duration-300 ${
               status === "SUCCESS" 
                 ? "bg-green-500 text-white" 
                 : status === "ERROR" 

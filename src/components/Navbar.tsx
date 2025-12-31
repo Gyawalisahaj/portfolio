@@ -42,7 +42,7 @@ export default function Navbar({ onSectionChange, currentSection }: NavbarProps)
               className="group flex items-center gap-1 sm:gap-2 transition-all whitespace-nowrap"
             >
               <span
-                className="font-mono text-[8px] sm:text-[9px] transition-colors"
+                className="font-mono text-[14px] sm:text-[14px] transition-colors"
                 style={{
                   color: currentSection === link.id
                     ? currentColors.active
@@ -60,7 +60,7 @@ export default function Navbar({ onSectionChange, currentSection }: NavbarProps)
                 {link.num}
               </span>
               <span
-                className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest transition-colors"
+                className="font-mono text-[16px] sm:text-[16px] uppercase tracking-widest transition-colors"
                 style={{
                   color: currentSection === link.id
                     ? "white"

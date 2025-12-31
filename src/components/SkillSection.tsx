@@ -28,18 +28,18 @@ export default function SkillSection() {
   ];
 
   return (
-    <div className="lance-card">
+    <div className="exp-card">
       {/* SECTION TITLE */}
       <div className="flex items-center gap-4 mb-8">
         {/* <span className="text-[#64ffda] font-mono text-[10px] tracking-[0.3em] uppercase">02 // Stack</span> */}
-        <h2 className="text-4xl font-black italic uppercase tracking-tighter">Technical Arsenal</h2>
+        <h2 className="text-5xl font-black italic uppercase tracking-tighter">Technical Arsenal</h2>
       </div>
 
       <div className="divide-y divide-white/10">
         {skillGroups.map((group, i) => (
           <div key={i} className="py-8 group flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-col">
-              <span className="font-mono text-[10px] text-slate-500 uppercase tracking-[0.4em] mb-1">
+              <span className="font-mono text-[15px] text-slate-500 uppercase tracking-[0.4em] mb-1">
                 [{group.cat}]
               </span>
               <span className="text-slate-600 font-mono text-[9px] uppercase tracking-widest">
@@ -48,7 +48,7 @@ export default function SkillSection() {
             </div>
             
             <div className="text-left md:text-right max-w-xl">
-              <span className="text-xl md:text-2xl font-bold italic text-slate-300 group-hover:text-[#64ffda] transition-all duration-500 leading-tight block">
+              <span className="text-xl md:text-3xl font-bold italic text-slate-300 group-hover:text-[#64ffda] transition-all duration-500 leading-tight block">
                 {group.items}
               </span>
             </div>

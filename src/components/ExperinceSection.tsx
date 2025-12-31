@@ -20,11 +20,11 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <div className="lance-card">
+    <div className="exp-card">
       {/* SECTION HEADER */}
       <div className="flex items-center gap-4 mb-12">
         <div className="w-1 h-8 bg-[#64ffda]" />  
-        <h2 className="text-4xl font-black italic uppercase tracking-tighter">Experience</h2>
+        <h2 className="text-5xl font-black italic uppercase tracking-tighter">Experience</h2>
       </div>
 
       <div className="space-y-16">
@@ -37,13 +37,13 @@ export default function ExperienceSection() {
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
               <div>
-                <span className="text-[#64ffda] font-mono text-[9px] tracking-[0.4em] uppercase mb-2 block">
+                <span className="text-[#64ffda] font-mono text-[12px] tracking-[0.4em] uppercase mb-2 block">
                   {exp.period}
                 </span>
-                <h3 className="text-3xl font-black italic uppercase tracking-tight text-white group-hover:text-[#64ffda] transition-colors">
+                <h3 className="text-4xl font-black italic uppercase tracking-tight text-white group-hover:text-[#64ffda] transition-colors">
                   {exp.title}
                 </h3>
-                <p className="text-slate-400 font-mono text-[11px] uppercase tracking-widest mt-1">
+                <p className="text-slate-400 font-mono text-[18px] uppercase tracking-widest mt-1">
                   {exp.company} <span className="text-slate-700 mx-2"></span> {exp.location}
                 </p>
               </div>
@@ -52,12 +52,12 @@ export default function ExperienceSection() {
             {/* Content */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="md:col-span-2 space-y-4">
-                <p className="text-slate-300 text-sm leading-relaxed italic">
+                <p className="text-slate-300 text-lg leading-relaxed italic">
                   {exp.description}
                 </p>
                 <ul className="space-y-3">
                   {exp.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start gap-3 text-[13px] text-slate-400 leading-relaxed">
+                    <li key={i} className="flex items-start gap-3 text-[18px] text-slate-400 leading-relaxed">
                       <span className="text-[#64ffda] mt-1.5 font-bold text-[10px]">→</span>
                       {bullet}
                     </li>
@@ -68,12 +68,12 @@ export default function ExperienceSection() {
               {/* Competencies Column */}
               <div className="space-y-6">
                 <div>
-                  <h4 className="font-mono text-[10px] text-slate-500 tracking-[0.3em] uppercase mb-4">Competencies</h4>
+                  <h4 className="font-mono text-[18px] text-slate-500 tracking-[0.3em] uppercase mb-4">Competencies</h4>
                   <div className="flex flex-wrap gap-2">
                     {exp.tags.map((tag) => (
                       <span 
                         key={tag} 
-                        className="px-3 py-1 bg-white/[0.03] border border-white/5 text-slate-400 font-mono text-[9px] uppercase tracking-widest hover:border-[#64ffda]/40 hover:text-white transition-all cursor-default"
+                        className="px-3 py-1 bg-white/[0.03] border border-white/5 text-slate-400 font-mono text-[15px] uppercase tracking-widest hover:border-[#64ffda]/40 hover:text-white transition-all cursor-default"
                       >
                         {tag}
                       </span>

@@ -27,8 +27,8 @@ body {
   }
 
   /* 3. The "Lance Card" for sections */
-  .lance-card {
-    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/10 rounded-sm p-8 transition-all duration-500 hover:bg-white/[0.05] hover:border-[#64ffda]/40;
+  .exp-card {
+    @apply max-w-6xl bg-white/[0.02] backdrop-blur-2xl border border-white/10 rounded-sm p-8 transition-all duration-500 hover:bg-white/[0.05] hover:border-[#64ffda]/40;
   }
   
   /* 4. Cinematic Outlined Typography */

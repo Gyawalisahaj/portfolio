@@ -8,7 +8,7 @@ export default function ProjectsSection() {
     {
       title: "HOUSE PRICE PREDICTION",
       tag: "AI / ML",
-      year: "2024",
+      year: "2025",
       github: "https://github.com/Gyawalisahaj/Nepal_Housepricepred",
       details: [
         "Created prediction model using RandomForestRegressor to predict house price with high accuracy.",
@@ -21,7 +21,7 @@ export default function ProjectsSection() {
     {
       title: "NEPALI MOVIE RECOMMENDATION",
       tag: "NLP / WEB",
-      year: "2024",
+      year: "2025",
       github: "https://github.com/Gyawalisahaj/Nepalimovierecommendation",
       details: [
         "Developed a full-stack recommendation engine using content-based filtering with Cosine Similarity.",
@@ -34,6 +34,7 @@ export default function ProjectsSection() {
   ];
 
   return (
+    <div className="exp-card">
     <div className="space-y-6">
       {projects.map((p, i) => {
         const isExpanded = expandedIndex === i;
@@ -112,5 +113,6 @@ export default function ProjectsSection() {
         );
       })}
     </div>
+  </div>
   );
 }
