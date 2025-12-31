@@ -1,105 +1,85 @@
 "use client";
-import Image from 'next/image'
-import sahajPic from '/public/image.jpg'
 import { useState } from "react";
-import AboutSection from "./components/AboutSection";
-import ProjectsSection from "./components/ProjectsSection";
-import EducationSection from "./components/EducationSection";
-import ContactSection from "./components/ContactSection";
-import SkillSection from "./components/SkillSection";
-import CertificationSection from "./components/CertificationSection";
-
-
-
-const sections = [
-  { name: "ABOUT", id: "about" },
-  { name: "SKILLS",  id:"skill"},
-  { name: "CERTIFICATION", id: "certificate" },
-  { name: "PROJECTS", id: "projects" },
-  { name: "EDUCATION", id: "education" },
-  { name: "CONTACTS", id: "contact" }
-];
+import Image from "next/image";
+import Navbar from "../components/Navbar";
+import Header from "../components/header";
+import AboutSection from "../components/AboutSection";
+import SkillSection from "../components/SkillSection";
+import ProjectsSection from "../components/ProjectsSection";
+import EducationSection from "../components/EducationSection";
+import ContactSection from "../components/ContactSection";
 
 export default function Home() {
-  const [active, setActive] = useState("about");
+  const [currentSection, setCurrentSection] = useState("home");
 
-  const getSectionClass = (section: string) =>
-    `absolute left-0 top-0 w-full transition-all duration-700 ease-in-out ${
-      active === section
-        ? "translate-x-0 opacity-100 z-10"
-        : "translate-x-full opacity-0 pointer-events-none z-0"
-    }`;
+  const renderCurrentSection = () => {
+    switch (currentSection) {
+      case "home":
+        return (
+          <section id="hero" className="min-h-screen flex items-center">
+            <Header onSectionChange={setCurrentSection} />
+          </section>
+        );
+      case "about":
+        return (
+          <section id="about" className="min-h-screen flex items-center">
+            <AboutSection />
+          </section>
+        );
+      case "experience":
+        return (
+          <section id="experience" className="min-h-screen flex items-center">
+            <EducationSection />
+          </section>
+        );
+      case "projects":
+        return (
+          <section id="projects" className="min-h-screen flex items-center">
+            <ProjectsSection />
+          </section>
+        );
+      case "skills":
+        return (
+          <section id="skills" className="min-h-screen flex items-center">
+            <SkillSection />
+          </section>
+        );
+      case "contact":
+        return (
+          <section id="contact" className="min-h-screen flex items-center">
+            <ContactSection />
+          </section>
+        );
+      default:
+        return (
+          <section id="hero" className="min-h-screen flex items-center">
+            <Header onSectionChange={setCurrentSection} />
+          </section>
+        );
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-[#0a192f] text-slate-100 flex flex-col items-center">
-      <div className="w-60 h-60 mt-16 overflow-hidden rounded-xl shadow-lg">
+    <main className="relative min-h-screen selection:bg-[#64ffda] selection:text-black">
+      {/* FIXED TOP NAVIGATION BAR */}
+      <Navbar onSectionChange={setCurrentSection} currentSection={currentSection} />
+
+      {/* FIXED BACKGROUND */}
+      <div className="fixed inset-0 -z-10 bg-[#030712]">
         <Image
-         src={sahajPic}
-        alt="Sahaj"
-        width={240}
-        height={240}
-        className="rounded-full border-4 border-[#233554] mb-3 shadow-lg object-cover"
-       />
+          src="/bg-cinematic.jpg"
+          alt="Background"
+          fill
+          className="object-cover opacity-40 mix-blend-screen"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030712]/60 to-[#030712]" />
       </div>
-      {/* Header */}
-      <header className="mt-8 text-center">
-        <h1 className="text-5xl font-extrabold">SAHAJ GYAWALI</h1>
-        <div className="text-xl text-[#64ffda] font-medium mt-2">
-          Student
-        </div>
-        <p className="max-w-xl mx-auto mt-6 text-slate-300">
-          I’m passionate about building practical AI solutions using machine learning, deep learning, and data science.
-        </p>
-        <div className="flex flex-col items-center">
-  {/* Profile Image, Name, Title */}
-        <a
-          href="./SGCV.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 px-6 py-2 bg-[#64ffda] text-[#0a192f] rounded font-semibold shadow hover:bg-[#52c7b8] transition"
-        >
-         Download CV
-        </a>
-</div>
-        {/* Navigation */}
-        <nav className="mt-10 flex justify-center  flex-wrap gap-4 sm:gap-10 ">
-          {sections.map((s) => (
-            <button
-              key={s.id}
-              className={`uppercase tracking-widest text-lg px-2 py-1 transition ${
-                active === s.id
-                  ? "text-[#64ffda] font-semibold border-b-2 border-[#64ffda]"
-                  : "text-slate-400 hover:text-[#64ffda]"
-              }`}
-              onClick={() => setActive(s.id)}
-            >
-              {s.name}
-            </button>
-          ))}
-        </nav>
-      </header>
-      {/* Sliding Content */}
-      <div className="relative w-full max-w-5xl h-[790px] mt-16 overflow-hidden ">
-        <div className={getSectionClass("about")}>
-          <AboutSection />
-        </div>
-        <div className={getSectionClass("skill")}>
-          <SkillSection />
-        </div>
-        <div className={getSectionClass("certificate")}>
-          <CertificationSection />
-        </div>
-        <div className={getSectionClass("projects")}>
-          <ProjectsSection />
-        </div>
-        <div className={getSectionClass("education")}>
-          <EducationSection />
-        </div>
-        <div className={getSectionClass("contact")}>
-          <ContactSection />
-        </div>
-        
+
+      <div className="max-w-7xl mx-auto px-6">
+        {/* CURRENT SECTION - FULL SCREEN */}
+        {renderCurrentSection()}
       </div>
-    </div>
+    </main>
   );
 }

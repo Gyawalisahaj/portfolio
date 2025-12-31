@@ -2,6 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --accent: #64ffda;
+  --bg-dark: #030712;
+}
+
+/* 1. Smooth Scrolling Setup */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  background-color: var(--bg-dark);
+  color: #f8fafc;
   font-family: 'Inter', sans-serif;
+  cursor: crosshair; /* Signature Lance cursor */
+  overflow-x: hidden;
+}
+
+@layer components {
+  /* 2. Glassmorphism for the Fixed Top Bar */
+  .nav-glass {
+    @apply fixed top-0 left-0 w-full z-50 bg-[#030712]/40 backdrop-blur-md border-b border-white/5 transition-all duration-300;
+  }
+
+  /* 3. The "Lance Card" for sections */
+  .lance-card {
+    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/10 rounded-sm p-8 transition-all duration-500 hover:bg-white/[0.05] hover:border-[#64ffda]/40;
+  }
+  
+  /* 4. Cinematic Outlined Typography */
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    color: transparent;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .text-outline:hover {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+    color: white;
+  }
+
+  /* 5. Glowing Accents */
+  .glow-cyan {
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.15);
+  }
+}
+
+@layer utilities {
+  /* Extreme tight tracking for that high-end look */
+  .tracking-tighter-extreme {
+    letter-spacing: -0.06em;
+  }
+}
+
+/* 6. Custom Selection Color */
+::selection {
+  background-color: var(--accent);
+  color: #000;
+}
+
+/* 7. Section Entrance Animations */
+.animate-section {
+  animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
