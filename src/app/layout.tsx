@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <base href="/sahaj/" />
+        <base href="/Portfolio/" />
       </head>
       <body className="bg-[#0a192f] text-slate-100 min-h-screen">
         {children}
