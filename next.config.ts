@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production';
-
-const nextConfig = {
-  output: 'export',
-  basePath: isProd ? '/portfolio' : '',
-  assetPrefix: isProd ? '/portfolio/' : '',
+const nextconfig = {
+  output: 'export', // Required for GitHub Pages
   images: {
-    unoptimized: true,
+    unoptimized: true, // GitHub Pages doesn't support the default Next.js Image Optimization
   },
 };
 
-module.exports = nextConfig;
+module.exports = nextconfig;
