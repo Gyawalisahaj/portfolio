@@ -139,7 +139,7 @@ export default function ProjectsSection() {
                     </div>
                   </div>
 
-                  <div className="pt-6 border-t border-white/5">
+                  <div className="pt-6 grid grid-row-2 gap-4 border-t border-white/5">
                     <a 
                       href={p.github} 
                       target="_blank" 
