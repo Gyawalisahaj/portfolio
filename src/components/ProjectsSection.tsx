@@ -46,10 +46,10 @@ export default function ProjectsSection() {
       tech: ["Python", "Scikit-learn", "Cosine Similarity", "BeautifulSoup", "Streamlit", "Pandas"]
     },
         {
-      title: "LLM-POWERED LINKEDIN CONTENT ENGINEERING",
+      title: "LLM-POWERED LINKEDIN CONTENT Generator",
       tag: "NLP / LLM / WEB",
       year: "2025",
-      github: "https://github.com/Gyawalisahaj/LinkedInContentEngineer",
+      github: "https://github.com/Gyawalisahaj/Linkedinpostllm",
       live: "https://linkedinpostllm-fbtk8rm9aqxbjgwcoyossr.streamlit.app/", 
       details: [
         "Developed a sophisticated LLM-powered content tool that bridges raw data analysis and creative LinkedIn post generation.",
@@ -148,6 +148,16 @@ export default function ProjectsSection() {
                       className="inline-flex items-center gap-4 group/link"
                     >
                       <span className="text-white font-mono text-[10px] uppercase tracking-[0.4em] group-hover/link:text-[#64ffda] transition-colors">Source Code</span>
+                      <span className="h-[1px] w-8 bg-[#64ffda] group-hover/link:w-12 transition-all duration-500" />
+                    </a>
+                    <a 
+                      href={p.live} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()} // Prevents collapsing when clicking link
+                      className="inline-flex items-center gap-4 group/link"
+                    >
+                      <span className="text-white font-mono text-[10px] uppercase tracking-[0.4em] group-hover/link:text-[#64ffda] transition-colors">Live</span>
                       <span className="h-[1px] w-8 bg-[#64ffda] group-hover/link:w-12 transition-all duration-500" />
                     </a>
                   </div>
