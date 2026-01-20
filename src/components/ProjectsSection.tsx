@@ -6,6 +6,20 @@ export default function ProjectsSection() {
 
   const projects = [
     {
+      title: "COVID-19 DATA ANALYSIS & VISUALIZATION",
+      tag: "DATA ANALYSIS / EDA / VISUALIZATION",
+      year: "2024",
+      github: "https://github.com/Gyawalisahaj/Covid19-Dataanalysis",
+      details: [
+        "Performed exploratory data analysis (EDA) on COVID-19 datasets to identify global and country-level trends.",
+        "Visualized confirmed, deaths, recovered, and active cases worldwide and specifically for Nepal using line plots and bar charts.",
+        "Created heatmaps to compare countries and WHO regions, highlighting concentrations of confirmed cases, recovery rates, and active cases.",
+        "Implemented sorting functions to identify the top 5 countries by confirmed, recovered, active cases, and deaths.",
+        "Focused on clear, insightful visualizations using Matplotlib and Seaborn for actionable interpretation of pandemic trends."
+      ],
+      tech: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"]
+    },
+    {
       title: "HOUSE PRICE PREDICTION",
       tag: "AI / ML",
       year: "2025",
@@ -24,14 +38,45 @@ export default function ProjectsSection() {
       year: "2025",
       github: "https://github.com/Gyawalisahaj/Nepalimovierecommendation",
       details: [
-        "Developed a full-stack recommendation engine using content-based filtering with Cosine Similarity.",
-        "Engineered a custom web scraper using BeautifulSoup to collect movie metadata from online sources.",
-        "Implemented JWT-based authentication in FastAPI to manage secure user sessions and protected routes.",
-        "Built a dynamic React interface with live search suggestions and integrated movie posters/trailers."
+        "Developed a full-stack recommendation engine using content-based filtering with Cosine Similarity logic.",
+        "Engineered a custom web scraper using BeautifulSoup to aggregate movie metadata and plot synopses.",
+        "Built an interactive UI using Streamlit to provide real-time recommendations and live movie details.",
+        "Implemented NLP techniques for text vectorization using Scikit-learn to measure feature similarities."
       ],
-      tech: ["FastAPI", "JWT Auth", "BeautifulSoup", "Cosine Similarity", "Scikit-learn", "React", "TailwindCSS"]
-    }
-  ];
+      tech: ["Python", "Scikit-learn", "Cosine Similarity", "BeautifulSoup", "Streamlit", "Pandas"]
+    },
+        {
+      title: "LLM-POWERED LINKEDIN CONTENT ENGINEERING",
+      tag: "NLP / LLM / WEB",
+      year: "2025",
+      github: "https://github.com/Gyawalisahaj/LinkedInContentEngineer",
+      live: "https://linkedinpostllm-fbtk8rm9aqxbjgwcoyossr.streamlit.app/", 
+      details: [
+        "Developed a sophisticated LLM-powered content tool that bridges raw data analysis and creative LinkedIn post generation.",
+        "Implemented a 'Data-to-Draft' pipeline using preprocess.py for metadata extraction, hashtag unification, and style alignment.",
+        "Built a few-shot learning engine (few_shot.py) to retrieve contextually relevant examples from processed_posts.json for dynamic prompt engineering.",
+        "Integrated LangChain with Groq's llama-3.3-70b-versatile model for fast, style-aligned content generation.",
+        "Delivered an intuitive Streamlit dashboard allowing toggling of post length, language (English/Nepali), and specific tags.",
+        "Strategic enhancements planned include Engagement Prediction (Viral Score), Semantic Style Matching with vector embeddings, and Automated Image/Graphic pairing for complete content automation."
+      ],
+      tech: ["Python", "LangChain", "Groq Llama 3.3", "Streamlit", "Pandas"]
+     },
+    {
+      title: "TELCO CUSTOMER CHURN PREDICTION",
+      tag: "ML / WEB / DATA SCIENCE",
+      year: "2026",
+      github: "https://github.com/Gyawalisahaj/telco-churn-prediction",
+      live: "https://telco-churn-prediction-hq2y2n5cf5prntakqy97er.streamlit.app/",
+      details: [
+        "Developed a production-ready churn prediction system bridging research notebooks to an interactive UI.",
+        "Implemented a clean separation of concerns: Pydantic for data validation, Model Service for business logic, and FastAPI + Streamlit for delivery.",
+        "Loaded and served trained ANN model (.keras) and scaler (.pkl) using a Singleton pattern for efficient inference.",
+        "Enhanced UX with churn probability, risk levels, and retention recommendations displayed on a real-time Streamlit dashboard.",
+        "Strategic enhancements include planned integration of SHAP/LIME for model explainability and GeoJSON-based province-level churn visualization."
+      ],
+      tech: ["Python", "TensorFlow", "Scikit-learn", "Pandas", "FastAPI", "Streamlit", "Joblib", "GeoJSON"]
+    },
+];
 
   return (
     <div className="exp-card">
