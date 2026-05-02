@@ -14,6 +14,19 @@ export default function ProjectsSection() {
 
   const projects = [
     {
+      title: "MEDIQUERY AI — MEDICAL RAG CHATBOT",
+      tag: "AI / NLP / FULL-STACK",
+      year: "2026",
+      github: "https://github.com/Gyawalisahaj/MED_CHATBOT",
+      details: [
+        "Designed and developed a Retrieval-Augmented Generation (RAG) chatbot tailored for medical students and professionals to query vast medical textbooks.",
+        "Built a robust retrieval pipeline using Sentence Transformers for semantic search and Groq's high-speed inference engine powered by Llama 3.3-70b.",
+        "Developed a scalable RESTful API with FastAPI and integrated it with an intuitive frontend built in Streamlit, providing precise answers alongside exact page citations.",
+        "Implemented persistent data management using SQLite for chat history and fully containerized the application with Docker and Docker Compose."
+      ],
+      tech: ["Python", "FastAPI", "Streamlit", "Groq Llama 3", "Docker", "SQLite"]
+    },
+    {
       title: "COVID-19 DATA ANALYSIS & VISUALIZATION",
       tag: "DATA ANALYSIS / EDA / VISUALIZATION",
       year: "2024",
