@@ -1,5 +1,13 @@
 "use client";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
+
+const GithubIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.24c3-.34 6-1.53 6-6.76a5.2 5.2 0 0 0-1.38-3.6 5.3 5.3 0 0 0-.1-3.5s-1.1-.35-3.5 1.25a12.1 12.1 0 0 0-6.4 0C6.1 2.5 5 2.85 5 2.85a5.3 5.3 0 0 0-.1 3.5A5.2 5.2 0 0 0 3.5 9.94c0 5.23 3 6.42 6 6.76A4.8 4.8 0 0 0 8.5 19v3"></path>
+  </svg>
+);
 
 export default function ProjectsSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -46,7 +54,7 @@ export default function ProjectsSection() {
       tech: ["Python", "Scikit-learn", "Cosine Similarity", "BeautifulSoup", "Streamlit", "Pandas"]
     },
         {
-      title: "LLM-POWERED LINKEDIN CONTENT Generator",
+      title: "LLM-POWERED LINKEDIN Generator",
       tag: "NLP / LLM / WEB",
       year: "2025",
       github: "https://github.com/Gyawalisahaj/Linkedinpostllm",
@@ -56,13 +64,12 @@ export default function ProjectsSection() {
         "Implemented a 'Data-to-Draft' pipeline using preprocess.py for metadata extraction, hashtag unification, and style alignment.",
         "Built a few-shot learning engine (few_shot.py) to retrieve contextually relevant examples from processed_posts.json for dynamic prompt engineering.",
         "Integrated LangChain with Groq's llama-3.3-70b-versatile model for fast, style-aligned content generation.",
-        "Delivered an intuitive Streamlit dashboard allowing toggling of post length, language (English/Nepali), and specific tags.",
-        "Strategic enhancements planned include Engagement Prediction (Viral Score), Semantic Style Matching with vector embeddings, and Automated Image/Graphic pairing for complete content automation."
+        "Delivered an intuitive Streamlit dashboard allowing toggling of post length, language (English/Nepali), and specific tags."
       ],
       tech: ["Python", "LangChain", "Groq Llama 3.3", "Streamlit", "Pandas"]
      },
     {
-      title: "TELCO CUSTOMER CHURN PREDICTION",
+      title: "TELCO CUSTOMER CHURN",
       tag: "ML / WEB / DATA SCIENCE",
       year: "2026",
       github: "https://github.com/Gyawalisahaj/telco-churn-prediction",
@@ -71,103 +78,153 @@ export default function ProjectsSection() {
         "Developed a production-ready churn prediction system bridging research notebooks to an interactive UI.",
         "Implemented a clean separation of concerns: Pydantic for data validation, Model Service for business logic, and FastAPI + Streamlit for delivery.",
         "Loaded and served trained ANN model (.keras) and scaler (.pkl) using a Singleton pattern for efficient inference.",
-        "Enhanced UX with churn probability, risk levels, and retention recommendations displayed on a real-time Streamlit dashboard.",
-        "Strategic enhancements include planned integration of SHAP/LIME for model explainability and GeoJSON-based province-level churn visualization."
+        "Enhanced UX with churn probability, risk levels, and retention recommendations displayed on a real-time Streamlit dashboard."
       ],
-      tech: ["Python", "TensorFlow", "Scikit-learn", "Pandas", "FastAPI", "Streamlit", "Joblib", "GeoJSON"]
+      tech: ["Python", "TensorFlow", "Scikit-learn", "FastAPI", "Streamlit"]
     },
-];
+  ];
 
   return (
-    <div className="exp-card">
-    <div className="space-y-6">
-      {projects.map((p, i) => {
-        const isExpanded = expandedIndex === i;
-        
-        return (
-          <div 
-            key={i} 
-            onClick={() => setExpandedIndex(isExpanded ? null : i)}
-            className={`lance-card group cursor-pointer transition-all duration-500 ${isExpanded ? 'border-[#64ffda]/40 bg-white/[0.04]' : ''}`}
-          >
-            {/* TOP ROW: PERSISTENT VIEW */}
-            <div className="flex justify-between items-center">
-              <div className="flex items-center gap-6 md:gap-10">
-                <span className={`font-mono text-xs transition-colors duration-300 ${isExpanded ? 'text-[#64ffda]' : 'text-slate-600 group-hover:text-[#64ffda]'}`}>
-                  0{i + 1}
-                </span>
-                <h3 className={`text-2xl md:text-4xl font-bold italic tracking-tighter transition-all duration-500 ${isExpanded ? 'text-white translate-x-2' : 'group-hover:translate-x-4'}`}>
-                  {p.title}
-                </h3>
-              </div>
-              <div className="text-right flex flex-col items-end">
-                <p className="text-[#64ffda] font-mono text-[10px] tracking-widest uppercase">{p.tag}</p>
-                <p className="text-slate-600 font-mono text-[10px]">{p.year}</p>
-                <span className={`text-[10px] mt-2 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
-                  {isExpanded ? '▲' : '▼'}
-                </span>
-              </div>
-            </div>
+    <div className="w-full">
+      <div className="flex items-center gap-4 mb-12">
+        <h2 className="text-4xl sm:text-5xl font-black italic uppercase tracking-tighter">Featured Work</h2>
+        <div className="h-[1px] flex-1 bg-gradient-to-r from-[#64ffda]/50 to-transparent" />
+      </div>
 
-            {/* EXPANDABLE DETAILS */}
-            <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isExpanded ? 'max-h-[800px] mt-10 opacity-100' : 'max-h-0 opacity-0'}`}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-6 border-t border-white/5">
+      <div className="space-y-4">
+        {projects.map((p, i) => {
+          const isExpanded = expandedIndex === i;
+          
+          return (
+            <motion.div 
+              key={i} 
+              layout
+              onClick={() => setExpandedIndex(isExpanded ? null : i)}
+              className={`group cursor-pointer glass rounded-xl overflow-hidden transition-all duration-500 hover:border-[#64ffda]/30 ${
+                isExpanded ? 'bg-white/[0.05] border-[#64ffda]/50 shadow-[0_0_30px_rgba(100,255,218,0.1)]' : 'bg-white/[0.02] border-white/5'
+              }`}
+            >
+              {/* TOP ROW: PERSISTENT VIEW */}
+              <motion.div layout className="p-6 sm:p-8 flex flex-col md:flex-row justify-between md:items-center gap-4">
+                <div className="flex items-center gap-4 md:gap-8">
+                  <span className={`font-mono text-sm transition-colors duration-300 ${isExpanded ? 'text-[#64ffda]' : 'text-slate-500 group-hover:text-[#64ffda]'}`}>
+                    0{i + 1}
+                  </span>
+                  <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold italic tracking-tight transition-all duration-500 ${isExpanded ? 'text-white' : 'text-slate-300 group-hover:text-white group-hover:translate-x-2'}`}>
+                    {p.title}
+                  </h3>
+                </div>
                 
-                {/* Description List */}
-                <div className="md:col-span-2 space-y-4">
-                  <h4 className="font-mono text-[10px] text-slate-500 tracking-[0.3em] uppercase mb-4">Implementation Details</h4>
-                  {p.details.map((detail, idx) => (
-                    <div key={idx} className="flex gap-4 group/item">
-                      <span className="text-[#64ffda] font-bold text-xs mt-1">→</span>
-                      <p className="text-slate-400 text-sm leading-relaxed group-hover/item:text-slate-200 transition-colors">
-                        {detail}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Tech & Links */}
-                <div className="space-y-8">
-                  <div>
-                    <h4 className="font-mono text-[10px] text-slate-500 tracking-[0.3em] uppercase mb-4">Tech Stack</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {p.tech.map((t) => (
-                        <span key={t} className="px-2 py-1 bg-[#64ffda]/5 border border-[#64ffda]/10 text-[#64ffda] font-mono text-[9px] uppercase tracking-widest">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
+                <div className="flex items-center justify-between md:justify-end gap-6 md:gap-8 w-full md:w-auto">
+                  <div className="flex flex-col items-start md:items-end gap-1">
+                    <span className="text-[#64ffda] font-mono text-[10px] tracking-widest uppercase">{p.tag}</span>
+                    <span className="text-slate-500 font-mono text-xs">{p.year}</span>
                   </div>
-
-                  <div className="pt-6 grid grid-row-2 gap-4 border-t border-white/5">
-                    <a 
-                      href={p.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()} // Prevents collapsing when clicking link
-                      className="inline-flex items-center gap-4 group/link"
-                    >
-                      <span className="text-white font-mono text-[10px] uppercase tracking-[0.4em] group-hover/link:text-[#64ffda] transition-colors">Source Code</span>
-                      <span className="h-[1px] w-8 bg-[#64ffda] group-hover/link:w-12 transition-all duration-500" />
-                    </a>
-                    <a 
-                      href={p.live} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()} // Prevents collapsing when clicking link
-                      className="inline-flex items-center gap-4 group/link"
-                    >
-                      <span className="text-white font-mono text-[10px] uppercase tracking-[0.4em] group-hover/link:text-[#64ffda] transition-colors">Live</span>
-                      <span className="h-[1px] w-8 bg-[#64ffda] group-hover/link:w-12 transition-all duration-500" />
-                    </a>
-                  </div>
+                  <motion.div 
+                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-[#64ffda]/10 group-hover:border-[#64ffda]/30 transition-all"
+                  >
+                    ▼
+                  </motion.div>
                 </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+              </motion.div>
+
+              {/* EXPANDABLE DETAILS */}
+              <AnimatePresence>
+                {isExpanded && (
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-6 sm:p-8 pt-0 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 border-t border-white/5 mt-2">
+                      
+                      {/* Description List */}
+                      <div className="md:col-span-2 space-y-4 pt-6">
+                        <h4 className="font-mono text-[11px] text-slate-400 tracking-[0.2em] uppercase mb-6 flex items-center gap-2">
+                          <span className="w-4 h-[1px] bg-[#64ffda]" />
+                          Project Scope
+                        </h4>
+                        {p.details.map((detail, idx) => (
+                          <motion.div 
+                            initial={{ x: -10, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.1 + (idx * 0.1) }}
+                            key={idx} 
+                            className="flex gap-4 group/item"
+                          >
+                            <ArrowUpRight className="w-4 h-4 text-[#64ffda] shrink-0 mt-1 opacity-50 group-hover/item:opacity-100 transition-opacity" />
+                            <p className="text-slate-300 text-sm leading-relaxed">
+                              {detail}
+                            </p>
+                          </motion.div>
+                        ))}
+                      </div>
+
+                      {/* Tech & Links */}
+                      <div className="space-y-8 pt-6">
+                        <div>
+                          <h4 className="font-mono text-[11px] text-slate-400 tracking-[0.2em] uppercase mb-6 flex items-center gap-2">
+                            <span className="w-4 h-[1px] bg-[#64ffda]" />
+                            Tech Stack
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {p.tech.map((t, tIdx) => (
+                              <motion.span 
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.2 + (tIdx * 0.05) }}
+                                key={t} 
+                                className="px-3 py-1.5 bg-[#64ffda]/5 border border-[#64ffda]/20 text-[#64ffda] font-mono text-[10px] uppercase tracking-wider rounded-md"
+                              >
+                                {t}
+                              </motion.span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="pt-6 grid gap-4 border-t border-white/10">
+                          {p.github && (
+                            <a 
+                              href={p.github} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="group/link flex items-center gap-3 px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all"
+                            >
+                              <span className="text-slate-400 group-hover/link:text-white transition-colors">
+                                <GithubIcon />
+                              </span>
+                              <span className="text-sm text-slate-300 group-hover/link:text-white font-medium">View Source</span>
+                              <ArrowUpRight className="w-4 h-4 text-[#64ffda] ml-auto opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
+                            </a>
+                          )}
+                          {p.live && (
+                            <a 
+                              href={p.live} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="group/link flex items-center gap-3 px-4 py-3 bg-[#64ffda]/10 hover:bg-[#64ffda]/20 border border-[#64ffda]/20 rounded-lg transition-all"
+                            >
+                              <ExternalLink className="w-4 h-4 text-[#64ffda]" />
+                              <span className="text-sm text-[#64ffda] font-medium">Live Demo</span>
+                              <ArrowUpRight className="w-4 h-4 text-[#64ffda] ml-auto opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
-  </div>
   );
 }
