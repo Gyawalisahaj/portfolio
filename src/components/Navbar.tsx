@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 interface NavbarProps {
   onSectionChange: (section: string) => void;
   currentSection: string;
@@ -15,72 +17,49 @@ export default function Navbar({ onSectionChange, currentSection }: NavbarProps)
     { name: "Contact", id: "contact", num: "06" },
   ];
 
-  // Dynamic colors based on current section
-  const getSectionColors = (section: string) => {
-    const colorMap: { [key: string]: { hover: string; active: string } } = {
-      home: { hover: "#64ffda", active: "#64ffda" }, // Cyan
-      about: { hover: "#ff6b6b", active: "#ff6b6b" }, // Red
-      experience: { hover: "#4ecdc4", active: "#4ecdc4" }, // Teal
-      projects: { hover: "#ffd93d", active: "#ffd93d" }, // Yellow
-      skills: { hover: "#a78bfa", active: "#a78bfa" }, // Purple
-      contact: { hover: "#f472b6", active: "#f472b6" }, // Pink
-    };
-    return colorMap[section] || colorMap.home;
-  };
-
-  const currentColors = getSectionColors(currentSection);
-
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-[#030712]/40 backdrop-blur-md border-b border-white/5">
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex justify-center">
-        {/* Menu Links */}
-        <div className="flex gap-4 sm:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide">
-          {navLinks.map((link) => (
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="fixed top-6 left-0 right-0 z-50 flex justify-center w-full px-4"
+    >
+      <div className="flex items-center gap-2 sm:gap-6 px-6 py-3 bg-[#030712]/60 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+        {navLinks.map((link) => {
+          const isActive = currentSection === link.id;
+          return (
             <button
               key={link.id}
               onClick={() => onSectionChange(link.id)}
-              className="group flex items-center gap-1 sm:gap-2 transition-all whitespace-nowrap"
+              className="relative px-3 py-2 group whitespace-nowrap"
             >
-              <span
-                className="font-mono text-[14px] sm:text-[14px] transition-colors"
-                style={{
-                  color: currentSection === link.id
-                    ? currentColors.active
-                    : "rgb(100 116 139)" // slate-600
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = currentColors.hover;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = currentSection === link.id
-                    ? currentColors.active
-                    : "rgb(100 116 139)"; // slate-600
-                }}
-              >
-                {link.num}
-              </span>
-              <span
-                className="font-mono text-[16px] sm:text-[16px] uppercase tracking-widest transition-colors"
-                style={{
-                  color: currentSection === link.id
-                    ? "white"
-                    : "rgb(148 163 184)" // slate-400
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "white";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = currentSection === link.id
-                    ? "white"
-                    : "rgb(148 163 184)"; // slate-400
-                }}
-              >
-                {link.name}
-              </span>
+              {isActive && (
+                <motion.div
+                  layoutId="nav-pill"
+                  className="absolute inset-0 bg-white/10 rounded-full -z-10"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+              <div className="flex items-center gap-2">
+                <span
+                  className={`font-mono text-[10px] transition-colors ${
+                    isActive ? "text-[#64ffda]" : "text-slate-500 group-hover:text-[#64ffda]"
+                  }`}
+                >
+                  {link.num}
+                </span>
+                <span
+                  className={`font-mono text-[11px] sm:text-xs uppercase tracking-widest transition-colors ${
+                    isActive ? "text-white" : "text-slate-400 group-hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </span>
+              </div>
             </button>
-          ))}
-        </div>
+          );
+        })}
       </div>
-    </nav>
+    </motion.nav>
   );
 }
