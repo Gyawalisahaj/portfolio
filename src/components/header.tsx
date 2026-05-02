@@ -1,59 +1,102 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { ArrowRight, Download } from "lucide-react";
+
 interface HeaderProps {
   onSectionChange: (section: string) => void;
 }
 
 export default function Header({ onSectionChange }: HeaderProps) {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+      },
+    },
+  };
+
   return (
-    <header className="relative w-full pt-20 sm:pt-32 mb-20 sm:mb-32">
+    <motion.header
+      className="relative w-full pt-20 sm:pt-32 mb-20 sm:mb-32"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {/* Top Decoration */}
-      <div className="flex items-center gap-3 mb-6 sm:mb-8">
-        <div className="h-[1px] w-8 sm:w-12 bg-[#64ffda]" />
-        <span className="text-[#64ffda] font-mono text-[10px] sm:text-[12px] uppercase tracking-widest">Welcome to My World</span>
-      </div>
+      <motion.div variants={itemVariants} className="flex items-center gap-4 mb-8">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: "3rem" }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="h-[2px] bg-[#64ffda] shadow-[0_0_10px_#64ffda]"
+        />
+        <span className="text-[#64ffda] font-mono text-xs sm:text-sm uppercase tracking-[0.3em]">
+          Welcome to My World
+        </span>
+      </motion.div>
 
       {/* Hero Name */}
-      <div className="relative mb-8 sm:mb-12">
-        <h1 className="text-[12vw] sm:text-[10vw] font-black italic uppercase leading-[0.75] tracking-tighter">
-          <span className="text-white">Sahaj</span> <br />
-          <span className="text-outline hover:text-white transition-all duration-700">Gyawali</span>
+      <motion.div variants={itemVariants} className="relative mb-10 z-10">
+        <h1 className="text-[12vw] sm:text-[9vw] font-black italic uppercase leading-[0.8] tracking-tighter-extreme">
+          <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">Sahaj</span> <br />
+          <span className="text-outline hover:text-white transition-all duration-700 relative group cursor-pointer">
+            Gyawali
+            <span className="absolute -inset-4 bg-[#64ffda]/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
+          </span>
         </h1>
-      </div>
+      </motion.div>
 
       {/* Description */}
-      <div className="max-w-3xl mb-8 sm:mb-12">
-        <p className="text-slate-500 font-mono text-[14px] sm:text-[16px] uppercase tracking-widest leading-loose">
-          <span className="text-white text-2xl font-bold">Aspiring Data Scientist</span>
-          <br /> Focused on transforming data into meaningful insights
-          <br /> Kathmandu, Nepal.
+      <motion.div variants={itemVariants} className="max-w-2xl mb-12">
+        <p className="text-slate-400 font-mono text-sm sm:text-base leading-loose">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#64ffda] to-indigo-400 text-2xl sm:text-3xl font-bold mb-4 inline-block">
+            Aspiring Data Scientist
+          </span>
+          <br />
+          Bridging the gap between raw data and actionable intelligence.
+          <br /> Based in Kathmandu, Nepal.
         </p>
-      </div>
+      </motion.div>
 
-      {/* CV Button */}
-      <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+      {/* Action Buttons */}
+      <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6">
         <a
           href="/SGCV.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-3 px-4 sm:px-6 py-3 bg-[#64ffda] text-black font-mono text-[10px] sm:text-[12px] uppercase tracking-widest rounded-sm hover:bg-[#64ffda]/80 transition-colors"
+          className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#64ffda] text-[#030712] font-bold font-mono text-xs sm:text-sm uppercase tracking-[0.2em] overflow-hidden rounded-sm transition-all hover:scale-105"
         >
-          <span>Download CV</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
+          <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black" />
+          <span className="relative z-10 flex items-center gap-2">
+            Download CV
+            <Download className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+          </span>
         </a>
 
         <button
           onClick={() => onSectionChange("projects")}
-          className="inline-flex items-center justify-center gap-3 px-4 sm:px-6 py-3 border border-[#64ffda] text-[#64ffda] font-mono text-[9px] sm:text-[10px] uppercase tracking-widest rounded-sm hover:bg-[#64ffda] hover:text-black transition-colors"
+          className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-white/20 text-white font-bold font-mono text-xs sm:text-sm uppercase tracking-[0.2em] rounded-sm hover:border-[#64ffda] hover:text-[#64ffda] transition-all hover:bg-[#64ffda]/5"
         >
-          <span>Explore Work</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+          <span className="relative z-10 flex items-center gap-2">
+            Explore Work
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
         </button>
-      </div>
-    </header>
+      </motion.div>
+    </motion.header>
   );
 }
