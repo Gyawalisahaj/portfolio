@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Header from "../components/header";
 import AboutSection from "../components/AboutSection";
@@ -8,6 +7,7 @@ import SkillSection from "../components/SkillSection";
 import ProjectsSection from "../components/ProjectsSection";
 import EducationSection from "../components/ExperinceSection";
 import ContactSection from "../components/ContactSection";
+import AnimatedBackground from "../components/AnimatedBackground";
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState("home");
@@ -40,7 +40,6 @@ export default function Home() {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    // Observe all sections
     sections.forEach((sectionId) => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -52,31 +51,17 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen selection:bg-[#64ffda] selection:text-black">
-      {/* FIXED TOP NAVIGATION BAR */}
+    <main className="relative min-h-screen">
+      <AnimatedBackground />
       <Navbar onSectionChange={scrollToSection} currentSection={currentSection} />
 
-      {/* FIXED BACKGROUND */}
-      <div className="fixed inset-0 -z-10 bg-[#030712]">
-        <Image
-          src="/bg-cinematic.jpg"
-          alt="Background"
-          fill
-          className="object-cover opacity-40 mix-blend-screen"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030712]/60 to-[#030712]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* HERO HEADER SECTION */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <section id="home" className="min-h-screen flex items-center justify-center pt-20 sm:pt-24">
           <div className="w-full max-w-4xl xl:max-w-6xl mx-auto">
             <Header onSectionChange={scrollToSection} />
           </div>
         </section>
 
-        {/* VERTICAL SCROLLING SECTIONS */}
         <section id="about" className="min-h-screen flex items-center justify-center py-12 sm:py-16 lg:py-20">
           <div className="w-full max-w-4xl mx-auto">
             <AboutSection />
