@@ -24,14 +24,14 @@ export default function Navbar({ onSectionChange, currentSection }: NavbarProps)
       transition={{ duration: 0.8 }}
       className="fixed top-6 left-0 right-0 z-50 flex justify-center w-full px-4"
     >
-      <div className="flex items-center gap-2 sm:gap-6 px-6 py-3 bg-[#030712]/60 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+      <div className="flex items-center gap-1 sm:gap-6 px-3 sm:px-6 py-2 sm:py-3 bg-[#030712]/60 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.3)] max-w-[95vw] overflow-x-auto no-scrollbar">
         {navLinks.map((link) => {
           const isActive = currentSection === link.id;
           return (
             <button
               key={link.id}
               onClick={() => onSectionChange(link.id)}
-              className="relative px-3 py-2 group whitespace-nowrap"
+              className="relative px-2 sm:px-3 py-2 group whitespace-nowrap"
             >
               {isActive && (
                 <motion.div
@@ -42,7 +42,7 @@ export default function Navbar({ onSectionChange, currentSection }: NavbarProps)
               )}
               <div className="flex items-center gap-2">
                 <span
-                  className={`font-mono text-[10px] transition-colors ${
+                  className={`hidden sm:inline-block font-mono text-[10px] transition-colors ${
                     isActive ? "text-[#64ffda]" : "text-slate-500 group-hover:text-[#64ffda]"
                   }`}
                 >
