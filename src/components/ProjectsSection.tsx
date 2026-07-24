@@ -54,12 +54,12 @@ export default function ProjectsSection() {
       ],
       tech: ["Python", "Scikit-learn", "Cosine Similarity", "BeautifulSoup", "Streamlit", "Pandas"]
     },
-        {
+    {
       title: "LLM-POWERED LINKEDIN Generator",
       tag: "NLP / LLM / WEB",
       year: "2025",
       github: "https://github.com/Gyawalisahaj/Linkedinpostllm",
-      live: "https://linkedinpostllm-fbtk8rm9aqxbjgwcoyossr.streamlit.app/", 
+      live: "https://linkedinpostllm-fbtk8rm9aqxbjgwcoyossr.streamlit.app/",
       details: [
         "Developed a sophisticated LLM-powered content tool that bridges raw data analysis and creative LinkedIn post generation.",
         "Implemented a 'Data-to-Draft' pipeline using preprocess.py for metadata extraction, hashtag unification, and style alignment.",
@@ -68,7 +68,7 @@ export default function ProjectsSection() {
         "Delivered an intuitive Streamlit dashboard allowing toggling of post length, language (English/Nepali), and specific tags."
       ],
       tech: ["Python", "LangChain", "Groq Llama 3.3", "Streamlit", "Pandas"]
-     },
+    },
     {
       title: "TELCO CUSTOMER CHURN",
       tag: "ML / WEB / DATA SCIENCE",
@@ -89,12 +89,12 @@ export default function ProjectsSection() {
       year: "2026",
       github: "https://github.com/Gyawalisahaj/MED_CHATBOT",
       details: [
-        "Designed and developed a Retrieval-Augmented Generation (RAG) chatbot tailored for medical students and professionals to query vast medical textbooks.",
-        "Built a robust retrieval pipeline using Sentence Transformers for semantic search and Groq's high-speed inference engine powered by Llama 3.3-70b.",
-        "Developed a scalable RESTful API with FastAPI and integrated it with an intuitive frontend built in Streamlit, providing precise answers alongside exact page citations.",
-        "Implemented persistent data management using SQLite for chat history and fully containerized the application with Docker and Docker Compose."
+        "Designed and developed a Retrieval-Augmented Generation (RAG) chatbot that lets users query medical textbooks (e.g. Harrison's, Guyton, Kumar & Clark's) and get answers with exact page citations.",
+        "Built a retrieval pipeline using Sentence Transformers for semantic search over ingested PDF chunks, paired with Groq's high-speed inference running Llama 3.3-70b for answer generation.",
+        "Developed a modular FastAPI backend (routes, RAG pipeline, services, schemas) and a Next.js/React frontend with chat, auth, and conversation-state management.",
+        "Implemented dual persistence — SQLite for chat history and PostgreSQL for user authentication — and fully containerized the stack with Docker and Docker Compose."
       ],
-      tech: ["Python", "FastAPI", "Streamlit", "Groq Llama 3", "Docker", "SQLite"]
+      tech: ["Python", "FastAPI", "Next.js", "Groq Llama 3", "Docker", "SQLite", "PostgreSQL"]
     }
   ];
 
@@ -108,15 +108,14 @@ export default function ProjectsSection() {
       <div className="space-y-4">
         {projects.map((p, i) => {
           const isExpanded = expandedIndex === i;
-          
+
           return (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               layout
               onClick={() => setExpandedIndex(isExpanded ? null : i)}
-              className={`group cursor-pointer glass rounded-xl overflow-hidden transition-all duration-500 hover:border-[#64ffda]/30 ${
-                isExpanded ? 'bg-white/[0.05] border-[#64ffda]/50 shadow-[0_0_30px_rgba(100,255,218,0.1)]' : 'bg-white/[0.02] border-white/5'
-              }`}
+              className={`group cursor-pointer glass rounded-xl overflow-hidden transition-all duration-500 hover:border-[#64ffda]/30 ${isExpanded ? 'bg-white/[0.05] border-[#64ffda]/50 shadow-[0_0_30px_rgba(100,255,218,0.1)]' : 'bg-white/[0.02] border-white/5'
+                }`}
             >
               {/* TOP ROW: PERSISTENT VIEW */}
               <motion.div layout className="p-6 sm:p-8 flex flex-col md:flex-row justify-between md:items-center gap-4">
@@ -128,13 +127,13 @@ export default function ProjectsSection() {
                     {p.title}
                   </h3>
                 </div>
-                
+
                 <div className="flex items-center justify-between md:justify-end gap-6 md:gap-8 w-full md:w-auto">
                   <div className="flex flex-col items-start md:items-end gap-1">
                     <span className="text-[#64ffda] font-mono text-[10px] tracking-widest uppercase">{p.tag}</span>
                     <span className="text-slate-500 font-mono text-xs">{p.year}</span>
                   </div>
-                  <motion.div 
+                  <motion.div
                     animate={{ rotate: isExpanded ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                     className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-[#64ffda]/10 group-hover:border-[#64ffda]/30 transition-all"
@@ -147,7 +146,7 @@ export default function ProjectsSection() {
               {/* EXPANDABLE DETAILS */}
               <AnimatePresence>
                 {isExpanded && (
-                  <motion.div 
+                  <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -155,7 +154,7 @@ export default function ProjectsSection() {
                     className="overflow-hidden"
                   >
                     <div className="p-6 sm:p-8 pt-0 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 border-t border-white/5 mt-2">
-                      
+
                       {/* Description List */}
                       <div className="md:col-span-2 space-y-4 pt-6">
                         <h4 className="font-mono text-[11px] text-slate-400 tracking-[0.2em] uppercase mb-6 flex items-center gap-2">
@@ -163,11 +162,11 @@ export default function ProjectsSection() {
                           Project Scope
                         </h4>
                         {p.details.map((detail, idx) => (
-                          <motion.div 
+                          <motion.div
                             initial={{ x: -10, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.1 + (idx * 0.1) }}
-                            key={idx} 
+                            key={idx}
                             className="flex gap-4 group/item"
                           >
                             <ArrowUpRight className="w-4 h-4 text-[#64ffda] shrink-0 mt-1 opacity-50 group-hover/item:opacity-100 transition-opacity" />
@@ -187,11 +186,11 @@ export default function ProjectsSection() {
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {p.tech.map((t, tIdx) => (
-                              <motion.span 
+                              <motion.span
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ delay: 0.2 + (tIdx * 0.05) }}
-                                key={t} 
+                                key={t}
                                 className="px-3 py-1.5 bg-[#64ffda]/5 border border-[#64ffda]/20 text-[#64ffda] font-mono text-[10px] uppercase tracking-wider rounded-md"
                               >
                                 {t}
@@ -202,9 +201,9 @@ export default function ProjectsSection() {
 
                         <div className="pt-6 grid gap-4 border-t border-white/10">
                           {p.github && (
-                            <a 
-                              href={p.github} 
-                              target="_blank" 
+                            <a
+                              href={p.github}
+                              target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
                               className="group/link flex items-center gap-3 px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all"
@@ -217,9 +216,9 @@ export default function ProjectsSection() {
                             </a>
                           )}
                           {p.live && (
-                            <a 
-                              href={p.live} 
-                              target="_blank" 
+                            <a
+                              href={p.live}
+                              target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
                               className="group/link flex items-center gap-3 px-4 py-3 bg-[#64ffda]/10 hover:bg-[#64ffda]/20 border border-[#64ffda]/20 rounded-lg transition-all"
