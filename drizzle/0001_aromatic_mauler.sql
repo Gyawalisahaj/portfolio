@@ -1,0 +1,1 @@
+ALTER TABLE "resume_events" ADD COLUMN "email" text;
