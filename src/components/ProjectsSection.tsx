@@ -20,11 +20,11 @@ const projects = [
       "Developed a Retrieval-Augmented Generation (RAG) chatbot allowing medical professionals to query textbooks with precise page citations.",
       "Implemented a semantic retrieval pipeline using Sentence Transformers for PDF chunking and embedding, integrated with Groq's Llama 3.3-70b for low-latency inference.",
       "Engineered a modular FastAPI backend with decoupled layers for routing, RAG processing, and Pydantic validation.",
-      "Integrated SQLite for local chat history persistence and PostgreSQL for secure user authentication.",
+      "Integrated SQLite for local persistence of chat history and user authentication to maintain a lightweight footprint.",
       "Created an automated ingestion script for seamless indexing of new PDF materials into the vector store.",
       "Containerized the application using Docker and Docker Compose for consistent local and server deployments.",
     ],
-    tech: ["Python", "FastAPI", "Next.js", "Groq Llama 3", "Docker", "SQLite", "PostgreSQL"],
+    tech: ["Python", "FastAPI", "Next.js", "Groq Llama 3", "Docker", "SQLite"],
   },
   {
     title: "Telco Customer Churn",
