@@ -3,113 +3,140 @@
 @tailwind utilities;
 
 :root {
-  --accent: #64ffda;
-  --bg-dark: #030712;
+  /* ---- Field Notes palette ---- */
+  /* Two neutrals for surface, two for text, three accents used with a clear job each. */
+  --paper: #eef1ea; /* base background — cool, sage-tinted, "graph paper" */
+  --paper-raised: #fbfbf8; /* cards, panels */
+  --ink: #1b1b17; /* primary text — warm near-black, not navy, not pure black */
+  --ink-soft: #5b5d52; /* secondary text */
+  --ink-faint: #93968a; /* tertiary text, placeholders */
+  --line: rgba(27, 27, 23, 0.12); /* hairline borders */
+  --line-strong: rgba(27, 27, 23, 0.22);
+
+  --brick: #a8401f; /* primary accent — CTAs, the "regression line" color */
+  --brick-dark: #8a3418;
+  --brick-tint: rgba(168, 64, 31, 0.09);
+
+  --moss: #445a34; /* secondary accent — tags, positive states */
+  --moss-tint: rgba(68, 90, 52, 0.1);
+
+  --indigo: #2f4258; /* structural accent — axis marks, dividers, small labels */
+  --indigo-tint: rgba(47, 66, 88, 0.08);
 }
 
-/* Smooth Scrolling Setup */
 html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
-  background-color: var(--bg-dark);
-  color: #f8fafc;
-  font-family: 'Inter', sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar */
+/* Subtle graph-paper texture: faint dot grid, present but never competing with content. */
+.paper-grid {
+  background-image: radial-gradient(circle, rgba(27, 27, 23, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Visible keyboard focus everywhere — quality floor, not optional. */
+:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background-color: var(--brick);
+  color: var(--paper);
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: var(--paper);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
+  background: var(--line-strong);
+  border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #64ffda;
+  background: var(--brick);
 }
 
 @layer components {
-  /* Premium Glassmorphism */
-  .glass {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  /* Display type: the characterful face, used with restraint (headlines only). */
+  .font-display {
+    font-family: var(--font-display), ui-sans-serif, sans-serif;
+  }
+  .font-mono-ui {
+    font-family: var(--font-mono), ui-monospace, monospace;
   }
 
-  /* The "Lance Card" redefined for a premium feel */
-  .exp-card {
-    @apply w-full glass rounded-2xl p-8 md:p-12 transition-all duration-500 hover:bg-white/[0.05] hover:border-white/20;
-  }
-  
-  /* Cinematic Outlined Typography */
-  .text-outline {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
-    color: transparent;
-    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Academic figure/table caption — the connective labeling device used across sections. */
+  .fig-caption {
+    @apply font-mono-ui text-[11px] uppercase tracking-[0.18em];
+    color: var(--ink-faint);
   }
 
-  .text-outline:hover {
-    -webkit-text-stroke: 1px rgba(100, 255, 218, 0.8);
-    color: transparent;
-    text-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+  /* Card surface raised off the paper background. */
+  .surface {
+    background-color: var(--paper-raised);
+    border: 1px solid var(--line);
   }
 
-  /* Glowing Accents */
-  .glow-cyan {
-    box-shadow: 0 0 30px rgba(100, 255, 218, 0.15);
+  /* Hand-annotation style underline for emphasized inline terms. */
+  .annotate {
+    text-decoration: underline;
+    text-decoration-color: var(--brick);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
   }
 
-  /* Animated Gradient Text */
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-[#64ffda] to-white bg-[length:200%_auto] animate-gradient;
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3.5 font-mono-ui text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200;
+    background-color: var(--brick);
+    color: var(--paper-raised);
+  }
+  .btn-primary:hover {
+    background-color: var(--brick-dark);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3.5 font-mono-ui text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200;
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    background-color: transparent;
+  }
+  .btn-secondary:hover {
+    border-color: var(--brick);
+    color: var(--brick);
   }
 }
 
 @layer utilities {
-  .tracking-tighter-extreme {
-    letter-spacing: -0.06em;
-  }
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
-  /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-}
-
-::selection {
-  background-color: var(--accent);
-  color: #000;
-}
-
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient {
-  animation: gradient 8s linear infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
 }
