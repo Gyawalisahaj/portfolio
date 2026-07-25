@@ -7,59 +7,97 @@ interface NavbarProps {
   currentSection: string;
 }
 
-export default function Navbar({ onSectionChange, currentSection }: NavbarProps) {
-  const navLinks = [
-    { name: "Home", id: "home", num: "01" },
-    { name: "About", id: "about", num: "02" },
-    { name: "Experience", id: "experience", num: "03" },
-    { name: "Projects", id: "projects", num: "04" },
-    { name: "Skills", id: "skills", num: "05" },
-    { name: "Contact", id: "contact", num: "06" },
-  ];
+const NAV_LINKS = [
+  { name: "Home", id: "home" },
+  { name: "About", id: "about" },
+  { name: "Log", id: "experience" },
+  { name: "Work", id: "projects" },
+  { name: "Skills", id: "skills" },
+  { name: "Contact", id: "contact" },
+];
 
+export default function Navbar({ onSectionChange, currentSection }: NavbarProps) {
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="fixed top-6 left-0 right-0 z-50 flex justify-center w-full px-4"
-    >
-      <div className="flex items-center gap-1 sm:gap-6 px-3 sm:px-6 py-2 sm:py-3 bg-[#030712]/60 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.3)] max-w-[95vw] overflow-x-auto no-scrollbar">
-        {navLinks.map((link) => {
-          const isActive = currentSection === link.id;
-          return (
-            <button
-              key={link.id}
-              onClick={() => onSectionChange(link.id)}
-              className="relative px-2 sm:px-3 py-2 group whitespace-nowrap"
-            >
-              {isActive && (
-                <motion.div
-                  layoutId="nav-pill"
-                  className="absolute inset-0 bg-white/10 rounded-full -z-10"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-              <div className="flex items-center gap-2">
-                <span
-                  className={`hidden sm:inline-block font-mono text-[10px] transition-colors ${
-                    isActive ? "text-[#64ffda]" : "text-slate-500 group-hover:text-[#64ffda]"
-                  }`}
+    <>
+      {/* Desktop: fixed margin column, like a notebook's side margin */}
+      <nav
+        aria-label="Section navigation"
+        className="hidden lg:flex fixed left-0 top-0 h-screen w-[220px] flex-col justify-between border-r border-line px-8 py-10 z-40"
+      >
+        <div>
+          <a href="#home" className="font-display text-lg font-semibold text-ink block mb-10">
+            SG
+          </a>
+          <div className="font-mono text-[10px] tracking-[0.15em] text-ink-faint leading-relaxed uppercase">
+            27.7172° N<br />
+            85.3240° E<br />
+            Kathmandu
+          </div>
+        </div>
+
+        <ul className="space-y-1">
+          {NAV_LINKS.map((link) => {
+            const isActive = currentSection === link.id;
+            return (
+              <li key={link.id}>
+                <button
+                  onClick={() => onSectionChange(link.id)}
+                  className="group relative flex items-center gap-3 py-2 w-full text-left"
                 >
-                  {link.num}
-                </span>
-                <span
-                  className={`font-mono text-[11px] sm:text-xs uppercase tracking-widest transition-colors ${
-                    isActive ? "text-white" : "text-slate-400 group-hover:text-white"
+                  <motion.span
+                    animate={{ width: isActive ? 16 : 6, backgroundColor: isActive ? "var(--brick)" : "var(--line-strong)" }}
+                    transition={{ duration: 0.25 }}
+                    className="h-[1.5px] shrink-0"
+                  />
+                  <span
+                    className={`font-mono text-xs uppercase tracking-[0.12em] transition-colors ${
+                      isActive ? "text-ink" : "text-ink-faint group-hover:text-ink-soft"
+                    }`}
+                  >
+                    {link.name}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-moss flex items-center gap-2">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-moss opacity-60" />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-moss" />
+          </span>
+          Open to internships
+        </div>
+      </nav>
+
+      {/* Mobile / tablet: slim top bar */}
+      <nav
+        aria-label="Section navigation"
+        className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-paper/90 backdrop-blur-sm border-b border-line"
+      >
+        <div className="flex items-center justify-between px-5 py-3">
+          <a href="#home" className="font-display text-base font-semibold text-ink">
+            SG
+          </a>
+          <div className="flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[75vw]">
+            {NAV_LINKS.map((link) => {
+              const isActive = currentSection === link.id;
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => onSectionChange(link.id)}
+                  className={`font-mono text-[10px] uppercase tracking-[0.1em] px-2.5 py-1.5 whitespace-nowrap transition-colors ${
+                    isActive ? "text-paper-raised bg-ink rounded-sm" : "text-ink-soft"
                   }`}
                 >
                   {link.name}
-                </span>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-    </motion.nav>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }
