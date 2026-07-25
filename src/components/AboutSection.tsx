@@ -6,102 +6,89 @@ export default function AboutSection() {
     { name: "Cricket", icon: "🏏" },
     { name: "Photography", icon: "📸" },
     { name: "Problem Solving", icon: "🧩" },
-    { name: "Continuous Learning", icon: "📚" }
+    { name: "Continuous Learning", icon: "📚" },
   ];
 
   const corePhilosophy = [
-    "Applied Statistics & Linear Algebra",
-    "End-to-End Project Architecture",
-    "Deterministic Problem Solving",
-    "Scalable Industry Solutions"
+    "Applied statistics & linear algebra",
+    "End-to-end project architecture",
+    "Deterministic problem solving",
+    "Scalable, production-minded builds",
   ];
 
-  const containerVariants = {
+  const container = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 },
-    },
+  const item = {
+    hidden: { y: 16, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
 
   return (
-    <motion.div 
-      className="glass rounded-2xl p-8 sm:p-12 border border-white/5 relative overflow-hidden"
-      variants={containerVariants}
+    <motion.div
+      variants={container}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-80px" }}
+      className="w-full"
     >
-      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-indigo-500/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
-
-      {/* 01. THE MISSION */}
-      <motion.div variants={itemVariants} className="flex items-center gap-4 mb-12">
-        <h2 className="text-4xl sm:text-5xl font-black italic uppercase tracking-tighter">About Statement</h2>
-        <div className="h-[1px] flex-1 bg-gradient-to-r from-[#64ffda]/50 to-transparent" />
+      <motion.p variants={item} className="fig-caption mb-4">
+        Fig. 2 — About
+      </motion.p>
+      <motion.div variants={item} className="flex items-baseline gap-6 mb-12 border-b border-line pb-8">
+        <h2 className="font-display text-4xl sm:text-5xl font-semibold text-ink">About</h2>
       </motion.div>
 
-      <motion.div variants={itemVariants} className="max-w-4xl mb-16">
-        <p className="text-slate-300 leading-relaxed text-lg sm:text-xl font-light">
-          I am a <span className="text-white font-semibold">CSIT student at Tribhuvan University</span> with a 
-          distinguished passion for Data Science and Artificial Intelligence. I architect solutions where 
-          <span className="text-[#64ffda]"> mathematics, data, and algorithms</span> converge to solve 
-          complex real-world challenges.
-        </p>
-      </motion.div>
+      <motion.p variants={item} className="text-ink-soft text-lg sm:text-xl leading-relaxed max-w-3xl mb-16">
+        I&apos;m a <span className="text-ink font-medium">CSIT student at Tribhuvan University</span>{" "}
+        with a distinguished passion for data science and artificial intelligence. I architect
+        solutions where <span className="text-brick font-medium">mathematics, data, and algorithms</span>{" "}
+        converge to solve real problems — not just notebook demos, but things that run in
+        production.
+      </motion.p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t border-white/10 pt-12">
-        
-        {/* LEFT COLUMN: ACADEMIC LOG */}
-        <motion.div variants={itemVariants} className="space-y-8">
-          <h4 className="font-mono text-sm sm:text-base text-[#64ffda] tracking-[0.2em] uppercase flex items-center gap-3">
-            <span className="w-3 h-[1px] bg-[#64ffda]"></span> Academic Path
-          </h4>
-          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-1 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300/10 before:to-transparent">
-            
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <motion.div variants={item}>
+          <h3 className="fig-caption mb-6">Academic path</h3>
+          <div className="space-y-8 relative">
+            <div className="absolute left-[3px] top-2 bottom-2 w-px bg-line-strong" />
+
             <div className="relative pl-8">
-              <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-[#64ffda] shadow-[0_0_10px_#64ffda]" />
-              <p className="text-white font-bold italic text-lg sm:text-xl uppercase tracking-tight mb-1">B.Sc. CSIT // Ongoing</p>
-              <p className="text-slate-400 font-mono text-xs sm:text-sm uppercase mb-1">Bhaktapur Multiple Campus</p>
-              <p className="text-slate-500 font-mono text-xs sm:text-sm uppercase">Tribhuvan University</p>
-            </div>
-            
-            <div className="relative pl-8">
-              <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-slate-600" />
-              <p className="text-slate-300 font-bold italic text-lg sm:text-xl uppercase tracking-tight mb-1">Higher Secondary</p>
-              <p className="text-slate-400 font-mono text-xs sm:text-sm uppercase mb-1">Kathmandu Model College</p>
-              <p className="text-slate-500 font-mono text-xs sm:text-sm uppercase">Major: Physics, Chemistry, Math, Bio</p>
+              <div className="absolute left-0 top-1.5 w-[7px] h-[7px] rounded-full bg-brick" />
+              <p className="text-ink font-display font-semibold text-lg mb-1">
+                B.Sc. CSIT <span className="text-ink-faint font-body font-normal text-sm">— ongoing</span>
+              </p>
+              <p className="text-ink-soft font-mono text-xs uppercase tracking-wide mb-0.5">
+                Bhaktapur Multiple Campus
+              </p>
+              <p className="text-ink-faint font-mono text-xs uppercase tracking-wide">Tribhuvan University</p>
             </div>
 
+            <div className="relative pl-8">
+              <div className="absolute left-0 top-1.5 w-[7px] h-[7px] rounded-full bg-ink-faint" />
+              <p className="text-ink font-display font-semibold text-lg mb-1">Higher Secondary</p>
+              <p className="text-ink-soft font-mono text-xs uppercase tracking-wide mb-0.5">
+                Kathmandu Model College
+              </p>
+              <p className="text-ink-faint font-mono text-xs uppercase tracking-wide">
+                Physics, Chemistry, Math, Biology
+              </p>
+            </div>
           </div>
         </motion.div>
 
-        {/* RIGHT COLUMN: PERSONAL SPECIFICATIONS (HOBBIES) */}
-        <motion.div variants={itemVariants} className="space-y-8">
-          <h4 className="font-mono text-sm sm:text-base text-[#64ffda] tracking-[0.2em] uppercase flex items-center gap-3">
-            <span className="w-3 h-[1px] bg-[#64ffda]"></span> Beyond the Code
-          </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <motion.div variants={item}>
+          <h3 className="fig-caption mb-6">Beyond the code</h3>
+          <div className="grid grid-cols-2 gap-3">
             {hobbies.map((hobby) => (
-              <motion.div 
-                key={hobby.name} 
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="flex flex-col p-5 bg-white/[0.02] border border-white/5 rounded-xl group hover:border-[#64ffda]/30 hover:bg-white/[0.04] transition-all duration-300"
+              <motion.div
+                key={hobby.name}
+                whileHover={{ y: -3 }}
+                className="surface rounded-sm p-4 flex flex-col gap-2"
               >
-                <span className="text-2xl mb-3 opacity-70 group-hover:opacity-100 transition-opacity">
-                  {hobby.icon}
-                </span>
-                <span className="text-slate-300 text-xs sm:text-sm font-mono tracking-widest uppercase group-hover:text-[#64ffda] transition-colors">
+                <span className="text-xl">{hobby.icon}</span>
+                <span className="text-ink-soft text-xs font-mono uppercase tracking-wide">
                   {hobby.name}
                 </span>
               </motion.div>
@@ -110,19 +97,14 @@ export default function AboutSection() {
         </motion.div>
       </div>
 
-      {/* CORE PHILOSOPHY & SKILLS FOOTER */}
-      <motion.div variants={itemVariants} className="bg-white/[0.02] p-8 rounded-xl border border-white/5 border-l-4 border-l-[#64ffda] mt-16 shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
-        <h4 className="font-mono text-xs sm:text-sm text-slate-400 tracking-[0.3em] uppercase mb-6">Core Philosophy</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-          {corePhilosophy.map((item, i) => (
-            <motion.div 
-              key={i} 
-              whileHover={{ x: 5 }}
-              className="flex items-center gap-4 text-sm sm:text-base font-mono text-slate-300 group cursor-default"
-            >
-              <span className="text-[#64ffda] opacity-50 group-hover:opacity-100 transition-opacity">→</span> 
-              <span className="group-hover:text-white transition-colors">{item}</span>
-            </motion.div>
+      <motion.div variants={item} className="surface rounded-sm p-8 border-l-[3px]" style={{ borderLeftColor: "var(--brick)" }}>
+        <h3 className="fig-caption mb-6">Core philosophy</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3">
+          {corePhilosophy.map((line, i) => (
+            <div key={i} className="flex items-center gap-3 text-ink-soft text-sm">
+              <span className="text-brick">→</span>
+              {line}
+            </div>
           ))}
         </div>
       </motion.div>
