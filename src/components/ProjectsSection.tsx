@@ -17,12 +17,14 @@ const projects = [
     year: "2026",
     github: "https://github.com/Gyawalisahaj/MED_CHATBOT",
     details: [
-      "Designed a Retrieval-Augmented Generation chatbot for medical students and professionals to query medical textbooks directly.",
-      "Built a retrieval pipeline with Sentence Transformers for semantic search, served through Groq's Llama 3.3-70b for fast inference.",
-      "Shipped a RESTful API in FastAPI with a Streamlit frontend, returning precise answers alongside exact page citations.",
-      "Persisted chat history in SQLite and containerized the full stack with Docker and Docker Compose.",
+      "Developed a Retrieval-Augmented Generation (RAG) chatbot allowing medical professionals to query textbooks with precise page citations.",
+      "Implemented a semantic retrieval pipeline using Sentence Transformers for PDF chunking and embedding, integrated with Groq's Llama 3.3-70b for low-latency inference.",
+      "Engineered a modular FastAPI backend with decoupled layers for routing, RAG processing, and Pydantic validation.",
+      "Integrated SQLite for local chat history persistence and PostgreSQL for secure user authentication.",
+      "Created an automated ingestion script for seamless indexing of new PDF materials into the vector store.",
+      "Containerized the application using Docker and Docker Compose for consistent local and server deployments.",
     ],
-    tech: ["Python", "FastAPI", "Streamlit", "Groq Llama 3", "Docker", "SQLite"],
+    tech: ["Python", "FastAPI", "Next.js", "Groq Llama 3", "Docker", "SQLite", "PostgreSQL"],
   },
   {
     title: "Telco Customer Churn",
@@ -31,12 +33,14 @@ const projects = [
     github: "https://github.com/Gyawalisahaj/telco-churn-prediction",
     live: "https://telco-churn-prediction-hq2y2n5cf5prntakqy97er.streamlit.app/",
     details: [
-      "Built a production-ready churn prediction system bridging research notebooks to an interactive UI.",
-      "Separated concerns cleanly: Pydantic for validation, a model service for business logic, FastAPI + Streamlit for delivery.",
-      "Served a trained ANN model (.keras) and scaler (.pkl) via a singleton pattern for efficient inference.",
-      "Surfaced churn probability, risk level, and retention recommendations on a real-time dashboard.",
+      "Engineered an end-to-end churn prediction pipeline integrating machine learning models with an interactive web dashboard.",
+      "Trained and evaluated XGBoost and Keras-based Artificial Neural Networks on telecom datasets mapped to Nepal's regional demographics.",
+      "Structured backend architecture using Pydantic for data validation and a dedicated FastAPI model service layer.",
+      "Optimized inference speed by serving the trained Keras model and scalers via a singleton pattern to maintain a warm state.",
+      "Developed interactive Power BI dashboards utilizing GeoJSON overlays for regional churn analysis.",
+      "Deployed a Streamlit application surfacing real-time churn probability, risk metrics, and retention strategies.",
     ],
-    tech: ["Python", "TensorFlow", "Scikit-learn", "FastAPI", "Streamlit"],
+    tech: ["Python", "TensorFlow", "XGBoost", "Scikit-learn", "FastAPI", "Streamlit", "Power BI"],
   },
   {
     title: "LLM-Powered LinkedIn Generator",
@@ -45,10 +49,12 @@ const projects = [
     github: "https://github.com/Gyawalisahaj/Linkedinpostllm",
     live: "https://linkedinpostllm-fbtk8rm9aqxbjgwcoyossr.streamlit.app/",
     details: [
-      "Built a content tool bridging raw data analysis and LinkedIn post generation — a 'data-to-draft' pipeline.",
-      "Wrote a few-shot retrieval engine pulling contextually relevant examples for dynamic prompt engineering.",
-      "Integrated LangChain with Groq's Llama-3.3-70b-versatile for fast, style-aligned generation.",
-      "Shipped a Streamlit dashboard with controls for post length, language (English/Nepali), and tags.",
+      "Developed a content generation tool automating the creation of style-consistent LinkedIn posts from minimal user inputs.",
+      "Engineered a few-shot retrieval system to source contextually relevant historical posts for dynamic prompt augmentation.",
+      "Integrated LangChain and Groq's Llama-3.3-70b-versatile model to achieve high-quality, low-latency text generation.",
+      "Implemented NLP pipelines for style extraction and automated tag unification to enforce consistent content categorization.",
+      "Deployed a Streamlit user interface featuring dynamic controls for post length, language, and topic filtering.",
+      "Structured and processed historical dataset using Pandas and JSON to optimize retrieval performance.",
     ],
     tech: ["Python", "LangChain", "Groq Llama 3.3", "Streamlit", "Pandas"],
   },
@@ -57,26 +63,32 @@ const projects = [
     tag: "NLP / Web",
     year: "2025",
     github: "https://github.com/Gyawalisahaj/Nepalimovierecommendation",
+    live: "https://nepalimovierecommendation.vercel.app",
     details: [
-      "Built a full-stack recommendation engine using content-based filtering with cosine similarity.",
-      "Wrote a BeautifulSoup scraper to aggregate Nepali movie metadata and plot synopses from scratch.",
-      "Delivered real-time recommendations and movie details through an interactive Streamlit UI.",
-      "Vectorized text with Scikit-learn to measure feature similarity across the catalog.",
+      "Engineered a full-stack content-based recommendation system processing over 500 Nepali movie titles.",
+      "Constructed a TF-IDF vectorization pipeline resulting in a 5000-dimension feature space, utilizing precomputed cosine-similarity matrices for optimal query times.",
+      "Developed a custom BeautifulSoup scraper to aggregate and clean movie metadata and plot synopses from various web sources.",
+      "Architected a FastAPI backend leveraging SQLAlchemy ORM to serve REST endpoints for movie metadata and similarity scoring.",
+      "Built a responsive frontend with Streamlit, surfacing match confidence scores, posters, and detailed metadata.",
+      "Formalized the core ML algorithm in Jupyter Notebooks to facilitate testing and continuous iteration.",
     ],
-    tech: ["Python", "Scikit-learn", "Cosine Similarity", "BeautifulSoup", "Streamlit"],
+    tech: ["Python", "Scikit-learn", "TF-IDF", "FastAPI", "BeautifulSoup", "Streamlit"],
   },
   {
     title: "House Price Prediction",
     tag: "AI / ML",
     year: "2025",
     github: "https://github.com/Gyawalisahaj/Nepal_Housepricepred",
+    live: "https://nepal-housepricepred.vercel.app",
     details: [
-      "Trained a RandomForestRegressor to predict Nepali house prices with strong accuracy.",
-      "Handled missing values, categorical encoding, and feature scaling as part of a full preprocessing pipeline.",
-      "Visualized features with Matplotlib and Seaborn to guide model iteration.",
-      "Tuned hyperparameters and evaluated performance with Scikit-learn.",
+      "Developed an end-to-end real estate price prediction platform tailored to the Nepali housing market.",
+      "Aggregated custom datasets via BeautifulSoup, capturing critical property attributes including location, area, and structural configuration.",
+      "Executed data preprocessing pipelines encompassing missing value imputation, categorical encoding, and feature scaling.",
+      "Trained and optimized a Random Forest Regressor using Scikit-learn, achieving robust predictive performance.",
+      "Deployed the predictive model via a FastAPI backend to expose low-latency estimation endpoints.",
+      "Designed and deployed a responsive React and Tailwind CSS frontend on Vercel for real-time user interaction.",
     ],
-    tech: ["Random Forest", "Scikit-learn", "Pandas", "FastAPI", "React"],
+    tech: ["Random Forest", "Scikit-learn", "Pandas", "FastAPI", "React", "Tailwind"],
   },
   {
     title: "COVID-19 Data Analysis",
@@ -84,10 +96,12 @@ const projects = [
     year: "2024",
     github: "https://github.com/Gyawalisahaj/Covid19-Dataanalysis",
     details: [
-      "Ran exploratory data analysis on global COVID-19 datasets to surface country-level and global trends.",
-      "Visualized confirmed, death, recovery, and active cases worldwide and for Nepal specifically.",
-      "Built heatmaps comparing countries and WHO regions across case concentration and recovery rate.",
-      "Ranked the top five countries by confirmed, recovered, active, and death counts.",
+      "Conducted comprehensive exploratory data analysis on global COVID-19 datasets, isolating macro trends and regional anomalies.",
+      "Generated time-series visualizations tracking infection, recovery, and mortality rates, correlating global baselines with Nepal-specific data.",
+      "Developed comparative heatmaps aggregating metrics across WHO regions to identify areas of critical transmission.",
+      "Analyzed statistical distributions to rank key national metrics including active case density and recovery efficacy.",
+      "Utilized Matplotlib and Seaborn for clear, publication-quality graphical representation of data.",
+      "Maintained reproducibility by documenting the entire analytical pipeline within a structured Jupyter Notebook.",
     ],
     tech: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
   },
@@ -98,7 +112,7 @@ export default function ProjectsSection() {
 
   return (
     <div className="w-full">
-      <p className="fig-caption mb-4">Fig. 4 — Research log, 2024–2026</p>
+      <p className="fig-caption mb-4">Selected Projects, 2024–2026</p>
       <div className="flex items-baseline gap-6 mb-10 border-b border-line pb-8">
         <h2 className="font-display text-4xl sm:text-5xl font-semibold text-ink">Selected work</h2>
       </div>
@@ -111,9 +125,7 @@ export default function ProjectsSection() {
               key={p.title}
               layout
               onClick={() => setExpandedIndex(isExpanded ? null : i)}
-              className={`cursor-pointer surface rounded-sm overflow-hidden transition-colors duration-300 ${
-                isExpanded ? "border-brick/40" : "hover:border-line-strong"
-              }`}
+              className={`cursor-pointer surface rounded-sm overflow-hidden transition-colors duration-300 ${isExpanded ? "border-brick/40" : "hover:border-line-strong"}`}
             >
               <motion.div layout className="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-5">
@@ -170,7 +182,7 @@ export default function ProjectsSection() {
                               className="flex items-center gap-3 px-4 py-3 border border-line-strong rounded-sm hover:border-ink transition-colors text-sm text-ink-soft hover:text-ink"
                             >
                               <GithubIcon />
-                              Source
+                              Source Code
                               <ArrowUpRight className="w-3.5 h-3.5 ml-auto" />
                             </a>
                           )}
@@ -183,7 +195,7 @@ export default function ProjectsSection() {
                               className="flex items-center gap-3 px-4 py-3 bg-brick-tint rounded-sm hover:bg-brick/15 transition-colors text-sm text-brick"
                             >
                               <ExternalLink className="w-3.5 h-3.5" />
-                              Live demo
+                              Live Demo
                               <ArrowUpRight className="w-3.5 h-3.5 ml-auto" />
                             </a>
                           )}

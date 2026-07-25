@@ -3,25 +3,24 @@
 @tailwind utilities;
 
 :root {
-  /* ---- Field Notes palette ---- */
-  /* Two neutrals for surface, two for text, three accents used with a clear job each. */
-  --paper: #eef1ea; /* base background — cool, sage-tinted, "graph paper" */
-  --paper-raised: #fbfbf8; /* cards, panels */
-  --ink: #1b1b17; /* primary text — warm near-black, not navy, not pure black */
-  --ink-soft: #5b5d52; /* secondary text */
-  --ink-faint: #93968a; /* tertiary text, placeholders */
-  --line: rgba(27, 27, 23, 0.12); /* hairline borders */
-  --line-strong: rgba(27, 27, 23, 0.22);
+  /* ---- Professional Developer Dark Palette ---- */
+  --paper: #0a0a0a; /* base background (neutral-950) */
+  --paper-raised: #171717; /* cards, panels (neutral-900) */
+  --ink: #f5f5f5; /* primary text (neutral-100) */
+  --ink-soft: #a3a3a3; /* secondary text (neutral-400) */
+  --ink-faint: #525252; /* tertiary text (neutral-600) */
+  --line: rgba(255, 255, 255, 0.08); /* hairline borders */
+  --line-strong: rgba(255, 255, 255, 0.16);
 
-  --brick: #a8401f; /* primary accent — CTAs, the "regression line" color */
-  --brick-dark: #8a3418;
-  --brick-tint: rgba(168, 64, 31, 0.09);
+  --brick: #3b82f6; /* primary accent — modern blue */
+  --brick-dark: #2563eb;
+  --brick-tint: rgba(59, 130, 246, 0.1);
 
-  --moss: #445a34; /* secondary accent — tags, positive states */
-  --moss-tint: rgba(68, 90, 52, 0.1);
+  --moss: #10b981; /* secondary accent — emerald for positive states/tags */
+  --moss-tint: rgba(16, 185, 129, 0.1);
 
-  --indigo: #2f4258; /* structural accent — axis marks, dividers, small labels */
-  --indigo-tint: rgba(47, 66, 88, 0.08);
+  --indigo: #6366f1; /* structural accent */
+  --indigo-tint: rgba(99, 102, 241, 0.08);
 }
 
 html {
@@ -49,9 +48,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle graph-paper texture: faint dot grid, present but never competing with content. */
+/* Subtle modern grid: faint dot grid */
 .paper-grid {
-  background-image: radial-gradient(circle, rgba(27, 27, 23, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 

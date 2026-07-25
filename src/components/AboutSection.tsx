@@ -34,7 +34,7 @@ export default function AboutSection() {
       className="w-full"
     >
       <motion.p variants={item} className="fig-caption mb-4">
-        Fig. 2 — About
+        Background & Education
       </motion.p>
       <motion.div variants={item} className="flex items-baseline gap-6 mb-12 border-b border-line pb-8">
         <h2 className="font-display text-4xl sm:text-5xl font-semibold text-ink">About</h2>
@@ -42,10 +42,7 @@ export default function AboutSection() {
 
       <motion.p variants={item} className="text-ink-soft text-lg sm:text-xl leading-relaxed max-w-3xl mb-16">
         I&apos;m a <span className="text-ink font-medium">CSIT student at Tribhuvan University</span>{" "}
-        with a distinguished passion for data science and artificial intelligence. I architect
-        solutions where <span className="text-brick font-medium">mathematics, data, and algorithms</span>{" "}
-        converge to solve real problems — not just notebook demos, but things that run in
-        production.
+        specializing in data science and artificial intelligence. My work focuses on engineering end-to-end machine learning pipelines, building robust backend architectures, and deploying data-driven applications to production.
       </motion.p>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
@@ -79,7 +76,7 @@ export default function AboutSection() {
         </motion.div>
 
         <motion.div variants={item}>
-          <h3 className="fig-caption mb-6">Beyond the code</h3>
+          <h3 className="fig-caption mb-6">Personal Interests</h3>
           <div className="grid grid-cols-2 gap-3">
             {hobbies.map((hobby) => (
               <motion.div
@@ -98,7 +95,7 @@ export default function AboutSection() {
       </div>
 
       <motion.div variants={item} className="surface rounded-sm p-8 border-l-[3px]" style={{ borderLeftColor: "var(--brick)" }}>
-        <h3 className="fig-caption mb-6">Core philosophy</h3>
+        <h3 className="fig-caption mb-6">Core Competencies</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3">
           {corePhilosophy.map((line, i) => (
             <div key={i} className="flex items-center gap-3 text-ink-soft text-sm">
