@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { checkAdminPassword } from "@/lib/password";
 import { createSessionToken, SESSION_COOKIE_NAME, SESSION_MAX_AGE } from "@/lib/session";
 
-// Small in-memory throttle for login attempts. Resets on redeploy/cold start —
-// that's fine, it only needs to blunt naive brute-forcing, not survive restarts.
 const attempts = new Map<string, { count: number; resetAt: number }>();
 const MAX_ATTEMPTS = 8;
 const WINDOW_MS = 10 * 60 * 1000;
@@ -18,6 +16,8 @@ function tooManyAttempts(key: string): boolean {
   entry.count += 1;
   return entry.count > MAX_ATTEMPTS;
 }
+
+export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";

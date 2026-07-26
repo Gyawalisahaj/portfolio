@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { and, eq, gt } from "drizzle-orm";
-import { db } from "@/db";
+import { getDb } from "@/db"; // Changed from import { db } from "@/db";
 import { contactMessages } from "@/db/schema";
 import { contactFormSchema } from "@/lib/validation";
 import { sendContactNotification } from "@/lib/email";
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
 const RATE_LIMIT_MAX_PER_WINDOW = 3;
+
+export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -34,6 +36,9 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    // Initialize D1 database instance per request
+    const db = getDb();
+
     const since = new Date(Date.now() - RATE_LIMIT_WINDOW_MS);
     const recent = await db
       .select({ id: contactMessages.id })

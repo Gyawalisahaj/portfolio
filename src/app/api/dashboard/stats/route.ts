@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sql, eq, gt, desc, isNotNull } from "drizzle-orm";
-import { db } from "@/db";
+import { getDb } from "@/db";
 import { pageViews, resumeEvents, contactMessages } from "@/db/schema";
 import { verifySessionToken, SESSION_COOKIE_NAME } from "@/lib/session";
 
 const DAYS_OF_HISTORY = 14;
+export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
   const authed = await verifySessionToken(req.cookies.get(SESSION_COOKIE_NAME)?.value);
@@ -12,6 +13,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  // Initialize D1 database instance per request
+  const db = getDb();
+
+  // Keep 'since' as a Date object so it matches the column type for Drizzle comparison
   const since = new Date(Date.now() - DAYS_OF_HISTORY * 24 * 60 * 60 * 1000);
 
   const [
@@ -23,27 +28,27 @@ export async function GET(req: NextRequest) {
     totalMessages,
     unreadMessages,
   ] = await Promise.all([
-    db.select({ count: sql<number>`count(*)::int` }).from(pageViews),
+    db.select({ count: sql<number>`cast(count(*) as integer)` }).from(pageViews),
 
     db
       .select({
-        day: sql<string>`to_char(${pageViews.createdAt}, 'YYYY-MM-DD')`,
-        count: sql<number>`count(*)::int`,
+        day: sql<string>`strftime('%Y-%m-%d', ${pageViews.createdAt})`,
+        count: sql<number>`cast(count(*) as integer)`,
       })
       .from(pageViews)
       .where(gt(pageViews.createdAt, since))
-      .groupBy(sql`to_char(${pageViews.createdAt}, 'YYYY-MM-DD')`)
-      .orderBy(sql`to_char(${pageViews.createdAt}, 'YYYY-MM-DD')`),
+      .groupBy(sql`strftime('%Y-%m-%d', ${pageViews.createdAt})`)
+      .orderBy(sql`strftime('%Y-%m-%d', ${pageViews.createdAt})`),
 
     db
-      .select({ path: pageViews.path, count: sql<number>`count(*)::int` })
+      .select({ path: pageViews.path, count: sql<number>`cast(count(*) as integer)` })
       .from(pageViews)
       .groupBy(pageViews.path)
       .orderBy(sql`count(*) desc`)
       .limit(5),
 
     db
-      .select({ type: resumeEvents.type, count: sql<number>`count(*)::int` })
+      .select({ type: resumeEvents.type, count: sql<number>`cast(count(*) as integer)` })
       .from(resumeEvents)
       .groupBy(resumeEvents.type),
 
@@ -54,10 +59,10 @@ export async function GET(req: NextRequest) {
       .orderBy(desc(resumeEvents.createdAt))
       .limit(50),
 
-    db.select({ count: sql<number>`count(*)::int` }).from(contactMessages),
+    db.select({ count: sql<number>`cast(count(*) as integer)` }).from(contactMessages),
 
     db
-      .select({ count: sql<number>`count(*)::int` })
+      .select({ count: sql<number>`cast(count(*) as integer)` })
       .from(contactMessages)
       .where(eq(contactMessages.read, false)),
   ]);
