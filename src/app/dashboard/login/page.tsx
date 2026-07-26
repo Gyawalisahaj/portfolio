@@ -20,7 +20,7 @@ export default function DashboardLoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),
       });
-      const json = await res.json();
+      const json = (await res.json()) as { error?: string };
 
       if (!res.ok) {
         setError(json.error || "Something went wrong.");

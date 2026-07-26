@@ -36,7 +36,7 @@ export default function ContactSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const json = await res.json();
+      const json = (await res.json()) as { error?: string };
 
       if (!res.ok) {
         setErrorMsg(json.error || "Something went wrong. Please try again.");
